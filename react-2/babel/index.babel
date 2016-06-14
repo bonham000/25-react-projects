@@ -1,0 +1,63 @@
+var Create = React.createClass({
+  render: function () {
+
+    var array = new Array(parseFloat(this.props.count));
+    for (var i = 0; i < array.length; i++) {
+      array[i] = i;
+    };
+    
+    var rand = function() {
+      return Math.round(Math.random() * 255);
+    };
+    var randColor = function() {
+      return {
+        background: 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')'
+      }  
+    }
+      
+    var divs  = array.map(function(val, index) {
+      return (
+        <div style={randColor()} className="box" id={index}>
+          <p className="number">{index + 1}</p>
+        </div>
+      )
+    }, this);
+    
+    return (
+      <div className="container">
+        {divs}
+      </div>
+     )
+  }
+  
+});
+          
+var Main = React.createClass({
+  getInitialState: function () {
+    return {
+      count: 0,
+    }
+  },
+  handleChange: function(event) {
+    if (!isNaN(event.target.value)) {
+      this.setState({count: event.target.value});
+    }
+  },
+  render: function () {    
+    return (
+      <div className="mainContainer">
+        <h1>Create Boxes with React!</h1>
+        <h2>Type the number of boxes you would like to generate in the box below</h2>
+        <form onSubmit={this.submitForm}>
+          <input type="text"
+            value={this.state.count}
+            onChange={this.handleChange}/>
+        </form>
+        <Create count={this.state.count}/>
+      </div>
+    )
+  }
+  
+});
+
+ReactDOM.render(<Main />, document.getElementById('main'));

@@ -1,0 +1,46 @@
+body {
+  background: rgb(255, 118, 64);
+  color: rgb(35,35,35);
+  text-align: center;
+  font-family: Avenir;
+}
+h1 {
+  margin-top: 35px;
+  margin-bottom: -20px;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 30px;
+}
+input {
+  font-size: 20px;
+  width: 100px;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  background: rgb(15, 162, 241);
+  text-align: center;
+  border: 1px solid rgb(30,30,30);
+}
+.box {
+  margin: 3px;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+.box:hover {
+  cursor: pointer;
+  color: rgb(206, 32, 141);
+  border: 1px solid white;
+  opacity: 0.7;
+}
+.number {
+  font-size: 150px;
+}
