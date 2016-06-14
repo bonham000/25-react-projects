@@ -45,7 +45,7 @@ var Main = React.createClass({
 
   getInitialState: function getInitialState() {
     return {
-      count: 0
+      count: 5
     };
   },
   handleChange: function handleChange(event) {
