@@ -1,0 +1,51 @@
+body {
+	background: rgb(48, 50, 52);
+    font-family: proxima-nova, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	text-align: center;
+	color: rgb(114, 223, 250);
+}
+.header {
+	position: fixed;
+	top: 0;
+	width: 600px;
+	left: 50%;
+	margin-left: -300px;
+	background: rgb(48, 50, 52);
+	border-bottom: 1px solid white;
+}
+
+img {
+	width: 200px;
+	margin-top: 25px;
+}
+h1 {
+	font-size: 50px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.projectList {
+	width: 400px;
+	margin-top: 335px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.title {
+	font-family: proxima-nova, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	font-size: 26px;
+}
+p {
+	margin-top: 5px;
+	margin-bottom: 0;
+	font-family: 'Quicksand', sans-serif;
+	text-align: left;
+}
+a, a:visited {
+	font-size: 22px;
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: rgb(114, 223, 250);
+}
