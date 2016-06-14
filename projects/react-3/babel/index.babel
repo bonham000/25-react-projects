@@ -1,0 +1,136 @@
+var RenderList = React.createClass({
+  
+  render: function() {
+    var data = this.props.data;
+    var countrySearch = this.props.search.trim().toLowerCase();
+    var capitalSearch = this.props.capitalSearch.trim().toLowerCase();
+    var regionSearch = this.props.regionSearch.trim().toLowerCase();
+    var subregionSearch = this.props.subregionSearch.trim().toLowerCase();
+    
+    if (countrySearch.length > 0) {
+      data = data.filter(function(item) {
+        return item.country.toLowerCase().match(countrySearch);
+      });
+    };
+
+    if (capitalSearch.length > 0) {
+      data = data.filter(function(item) {
+        return item.capital.toLowerCase().match(capitalSearch);
+      });
+    };
+    
+    if (regionSearch.length > 0) {
+      data = data.filter(function(item) {
+        return item.region.toLowerCase().match(regionSearch);
+      });
+    };
+    
+    if (subregionSearch.length > 0) {
+      data = data.filter(function(item) {
+        return item.subregion.toLowerCase().match(subregionSearch);
+      });
+    };
+    
+    var list = data.map(function(entry, index) {
+      return (
+        <tr>
+          <td className="country">{entry.country.substr(0,30)}</td>
+          <td className="capital">{entry.capital}</td>
+          <td className="region">{entry.region}</td>
+          <td className="subregion">{entry.subregion}</td>
+          <td className="lat">{parseFloat(entry.coordinates[0]).toFixed(2)}</td>
+          <td className="lon">{parseFloat(entry.coordinates[1]).toFixed(2)}</td>
+        </tr>
+      )
+    }, this);
+    return (
+      <table>
+        <tr className="tableHead">
+          <th>Country</th>
+          <th>Capital</th>
+          <th>Region</th>
+          <th>Subregion</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+        </tr>
+        {list}
+      </table>
+    )
+  }
+  
+});
+
+
+var Main = React.createClass({
+  getInitialState: function () {
+    return {
+      data: [],
+      countrySearch: '',
+      capitalSearch: '',
+      regionSearch: '',
+      subregionSearch: ''
+    }
+  },
+  componentWillMount() {
+    return this.parseData()
+  },
+  parseData: function() {
+    $.getJSON('https://raw.githubusercontent.com/mledoze/countries/master/countries.json', function(response) {
+      
+      console.log("JSON data received");
+      var array = new Array();
+      
+      for (var i = 0; i < response.length; i++) {
+
+          var entry = new Object();
+        
+          entry.country     = response[i].name.official;
+          entry.capital     = response[i].capital;
+          entry.region      = response[i].region;
+          entry.subregion   = response[i].subregion;
+          entry.coordinates = response[i].latlng;
+      
+          array[i] = entry;
+      }
+      this.setState({data: array});
+      
+    }.bind(this));
+
+  },
+  handleCountrySearch: function(event) {
+    this.setState({countrySearch: event.target.value})
+  },
+  handleCapitalSearch: function(event) {
+    this.setState({capitalSearch: event.target.value})
+  },
+  handleRegionSearch: function(event) {
+    this.setState({regionSearch: event.target.value})
+  },
+  handleSubregionSearch: function(event) {
+    this.setState({subregionSearch: event.target.value})
+  },
+  render: function() {
+    return (
+      <div>
+        <h1 className="title">Country/Capital Data Multi-Search Service</h1>
+        <div className="buttons">
+        <input type="text" onChange={this.handleCountrySearch} placeholder="Filter by Country" />
+        <input type="text" onChange={this.handleCapitalSearch} placeholder="Filter by Capital" />
+        <input type="text" onChange={this.handleRegionSearch} placeholder="Filter by Region" />
+        <input type="text" onChange={this.handleSubregionSearch} placeholder="Filter by Subregion" />
+        </div>
+        <RenderList
+          data={this.state.data}
+          search={this.state.countrySearch}
+          capitalSearch={this.state.capitalSearch}
+          regionSearch={this.state.regionSearch}
+          subregionSearch={this.state.subregionSearch} />
+      </div>
+    )
+  }
+});
+
+ReactDOM.render(<Main />, document.getElementById('main'));
+
+
+

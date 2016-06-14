@@ -1,0 +1,47 @@
+body {
+  background: #353848;
+  color: #ff7473;
+}
+.title {
+  margin-left: 25px;
+}
+input {
+  margin-left: 25px;
+  padding: 9px;
+  font-size: 20px;
+  border: none;
+  background: rgb(30,30,30);
+  color: #67D5B5;
+  border-radius: 3px;
+}
+::-webkit-input-placeholder {
+   color: #ffc952;
+}
+table {
+  margin-top: 15px;
+  margin-left: 25px;
+}
+th {
+  text-align: left;
+  color: #ff7473;
+  border-bottom: 1px solid #ffc952;
+  font-size: 18px;
+}
+td {
+  color: #47b8e0;
+}
+.country {
+  width: 350px;
+}
+.capital {
+  width: 200px;
+}
+.region {
+  width: 200px;
+}
+.subregion {
+  width: 200px;
+}
+.lat, .lon {
+  width: 100px;
+}
