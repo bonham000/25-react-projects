@@ -1,0 +1,131 @@
+$yellow: #f9d423;
+$blue: #1ec0ff;
+$grey: #a3a1a1;
+$dark: #1F2124;
+$mint: #03E1A4;
+
+body {
+  background: #404146;
+  text-align: center;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  font-family: 'Prompt', sans-serif;
+}
+.mainContainer {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background: #ff4e50;
+  min-width: 600px;
+  box-shadow: 10px 10px 5px rgb(15,15,15);
+  border-radius: 5px;
+}
+.titles {
+  background: $yellow;
+  height: 150px;
+}
+.title {
+  font-size: 50px;
+  padding-top: 15px;
+  margin-bottom: -15px;
+}
+.subtitle {
+  margin-bottom: 15px;
+}
+.clear {
+  margin-top: 15px;
+  margin-right: 8px;
+  font-size: 25px;
+  padding: 10px;
+  background: $yellow;
+  margin-bottom: 20px;
+}
+.reset {
+  margin-top: 15px;
+  margin-left: 8px;
+  font-size: 25px;
+  padding: 10px;
+  background: $yellow;
+  margin-bottom: 20px;
+}
+.clear:hover, .reset:hover {
+  cursor: pointer;
+  background: $dark;
+  color: $blue;
+}
+button:active, button:focus {
+  outline: none;
+}
+.newTask {
+  font-size: 20px;
+  margin-top: 15px;
+}
+input {
+  padding: 7px;
+  text-align: center;
+  background: $dark;
+  border: none;
+  border-radius: 2px;
+  color: $mint;
+}
+input:focus {
+  outline: none;
+}
+::-webkit-input-placeholder {
+  color: rgb(180,180,180);
+}
+button {
+  font-size: 18px;
+  border-radius: 3px;
+  border: none;
+}
+.enter {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: $blue;
+  font-size: 25px;
+  padding: 8px;
+}
+.enter:hover {
+  cursor:pointer;
+}
+.remove {
+  background: $yellow;
+}
+.remove:hover {
+  cursor: pointer;
+  color: #fc913a;
+  background: rgb(30,30,30);
+}
+.search {
+  font-size: 20px;
+}
+table {
+  border-collapse: separate;
+}
+.taskTable {
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+th {
+  font-size: 25px;
+}
+td {
+  font-size: 20px;
+}
+tr, td {
+  border: none;
+}
+tr:hover {
+  background: rgba(200,200,200,.3);
+}
+.taskNumber {
+  text-align: right;
+}
+.taskItem {
+  text-align: left;
+  padding-left: 25px;
+}

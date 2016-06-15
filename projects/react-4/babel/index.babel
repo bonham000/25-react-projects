@@ -1,0 +1,128 @@
+var initialArray = ["Finish Redux Tutorials", "Learn more about Relay", "Build 5 more React apps", "Review React Component Lifecycle", "Obtain Data Visualization Certificate", "Review Algorithms", "Tweet Progress", "Get a coffee!", "Browse Google Fonts", "Learn more about React Native"];
+
+var ControlElement = React.createClass({
+  getInitialState: function() {
+    return {
+      items: initialArray,
+      newItem: '',
+      search: ''
+    }
+  },
+  clear: function() {
+    this.setState({items: new Array()});
+  },
+  reset: function() {
+    this.setState({items: initialArray});
+  },
+  deleteItem: function(number, event) {
+    var cloneState = this.state.items.slice();
+    cloneState.splice(number, 1);
+    this.setState({items: cloneState});
+  },
+  searchQuery: function(event) {
+    this.setState({search: event.target.value})
+  },
+  handleSearch: function(event) {
+    event.preventDefault();
+    var searchStr = this.state.search.trim().toLowerCase();
+  },
+  handleChange: function(event) {
+    this.setState({newItem: event.target.value});
+  },
+  handleSubmit: function(event) {
+    event.preventDefault();
+    if (this.state.newItem.length > 0) {
+      this.state.items.push(this.state.newItem);
+      this.setState({newItem: ''});
+    }
+  },
+  render: function() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            className="newTask"
+            type="text"
+            placeholder="create new work item"
+            onChange={this.handleChange}
+            value={this.state.newItem} /><br></br>
+          <button className="enter">Enter New Item</button>
+        </form>
+        <form onSubmit={this.handleSearch}>
+          <input
+            className="search"
+            type="text"
+            placeholder="filter list"
+            onChange={this.searchQuery}
+            value={this.state.search} />
+        </form>
+        <AppItems
+          items={this.state.items}
+          search={this.state.search}
+          deleteItem={this.deleteItem} />
+        <button className="clear" onClick={this.clear}>Clear the List</button>
+        <button className="reset" onClick={this.reset}>Reset the List</button>
+      </div>
+    )
+  }
+});
+
+var AppItems = React.createClass({
+  handleClick: function() {
+        
+  },
+  render: function(props) {
+    var items = this.props.items;
+    var search = this.props.search;
+    
+    if (search.length > 0) {
+      items = items.filter(function(item) {
+        return item.toLowerCase().match(search);
+      });
+    }
+    var tableHeader =  
+        <tr className="tableHead">
+          <th className="taskNumber">#</th>
+          <th className="taskItem">Task</th>
+          <th>(X)</th>
+        </tr>;
+    
+    if (items.length === 0) {
+        tableHeader = '';
+    }
+    
+    var list = items.map(function(item, index) {
+      return <tr>
+        <td className="taskNumber">Task {index + 1}:</td>
+        <td className="taskItem" key={index}>{item}</td>
+        <td>
+          <button
+              className="remove"
+              onClick={this.props.deleteItem.bind(this, index)}>X</button>
+        </td>
+      </tr>}.bind(this));
+    return (
+      <table className="taskTable">
+        {tableHeader}
+        {list}
+      </table>
+    )
+  }
+});
+
+var Component = React.createClass({
+  render: function() {
+    return (
+        <div className="mainContainer">
+          <div className="titles">
+            <h1 className="title">React To-Do App</h1>
+            <h2 className="subtitle">Enhance Your Productivity</h2>
+          </div>
+          <ControlElement />
+        </div>
+    )
+  }
+  
+});
+
+ReactDOM.render(<Component />, document.getElementById('app'));
