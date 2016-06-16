@@ -1,5 +1,5 @@
 body {
-	background: rgb(48, 50, 52);
+	background: rgb(40,40,40);
     font-family: proxima-nova, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 	text-align: center;
 	color: rgb(114, 223, 250);
@@ -10,7 +10,7 @@ body {
 	width: 600px;
 	left: 50%;
 	margin-left: -300px;
-	background: rgb(48, 50, 52);
+	background: rgb(40,40,40);
 	border-bottom: 1px solid white;
 }
 
