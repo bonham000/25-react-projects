@@ -1,0 +1,25 @@
+$red: #E85756;
+$yellow: #FFF159;
+$darkBlue: #16324F;
+$font: 'Hind Siliguri', sans-serif;
+
+body {
+  background: linear-gradient($red, $yellow);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: $font;
+}
+button:hover {
+  color: $red !important;
+  background: $darkBlue !important;
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+}
+a, a:visited {
+  color: $darkBlue;
+}
+a:hover {
+  color: rgb(9, 204, 125);
+}

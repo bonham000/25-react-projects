@@ -1,0 +1,24 @@
+body {
+  background: linear-gradient(#E85756, #FFF159);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Hind Siliguri", sans-serif;
+}
+
+button:hover {
+  color: #E85756 !important;
+  background: #16324F !important;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+a, a:visited {
+  color: #16324F;
+}
+
+a:hover {
+  color: #09cc7d;
+}

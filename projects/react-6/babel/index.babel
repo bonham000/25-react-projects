@@ -1,0 +1,164 @@
+
+var Root = React.createClass({
+  render: function() {
+    var titleStyle = {
+      marginTop: "50px",
+      marginBottom: "15px",
+      fontSize: "50px",
+      textAlign: "center",
+      color: "#13293D"
+    }
+    return (
+      <div>
+        <h1 style={titleStyle}>Trending GIFs courtesy of the&nbsp;
+          <a target="_blank" href="https://github.com/Giphy/GiphyAPI">
+            Giphy API
+          </a>
+        </h1>
+        <ImagesContainer />
+      </div>
+    )
+  }
+});
+
+var ControlLogic = React.createClass({
+  render: function() {
+    var btnStyles = {
+      fontSize: "30px",
+      border: "none",
+      background: "white",
+      marginTop: "15px",
+      borderRadius: "10px",
+      padding: "12px",
+      background: "#13293D",
+      color: "#FFF159"
+    };
+    var divStyle = {
+      textAlign: "center",
+      marginBottom: "20px"
+    };
+    return (
+       <div style={divStyle}>
+        
+          <button style={btnStyles}
+            onClick={this.props.callGiphy.bind(this)}>
+            Load (or Reload) Trending GIFs
+          </button><br></br>
+          
+          <button style={btnStyles}
+            onClick={this.props.random.bind(this)}>
+            Select One at Random
+          </button><br></br> 
+          
+          <button style={btnStyles}
+            onClick={this.props.randomize.bind(this)}>
+            Randomize Order
+          </button><br></br> 
+          
+          <button style={btnStyles}
+            onClick={this.props.reverse.bind(this)}>
+            Reverse Order
+          </button><br></br>
+        
+          <button style={btnStyles}
+            onClick={this.props.clear.bind(this)}>
+            Clear All
+          </button>
+        
+       </div>
+    )
+  }
+});
+
+var ImagesContainer = React.createClass({
+  getInitialState: function() {
+    return {
+      data: [],
+      copy: []
+    };
+  },
+  
+  callGiphy: function(event) {
+    event.preventDefault();
+      $.getJSON('http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC', function(response) {
+      var data = response.data;
+      var array = [];
+      for (var i = 0; i < data.length; i++) {
+        array[i] = data[i].images.fixed_height.url;
+      }
+      this.setState({data: array, copy: array});
+    }.bind(this));
+  },
+  
+  reverse: function(event) {
+    event.preventDefault();
+    var stateCopy = this.state.data.slice(0);
+    this.setState({data: stateCopy.reverse()});
+  },
+  
+  randomize: function(event) {
+    event.preventDefault();
+    var stateCopy = this.state.data.slice(0);
+    var originalLength = stateCopy.length;
+    var randomArr = [];
+    
+    for (var i = 0; i < originalLength; i++) {
+        
+        var randomIndex = Math.round(Math.random() * (stateCopy.length - 1) );        
+        randomArr[i] = stateCopy[randomIndex];       
+        stateCopy.splice(randomIndex, 1);
+        
+    }
+    this.setState({data: randomArr});    
+  },
+  
+  random: function(event) {
+    event.preventDefault();
+    var stateCopy = this.state.copy.slice(0);
+    var random = [stateCopy[Math.round(Math.random() * 24)]];
+    this.setState({data: random});
+  },
+  
+  clear: function(event) {
+    event.preventDefault();
+    this.setState({data: []});
+  },
+  
+  render: function() {
+    return (
+      <div>
+        <ControlLogic
+          callGiphy={this.callGiphy}
+          reverse={this.reverse}
+          randomize={this.randomize}
+          random={this.random}
+          clear={this.clear} />
+        <Images data={this.state.data} />
+      </div>
+    )
+  }
+});
+
+var Images = React.createClass({
+  render: function() {
+    var images = this.props.data;
+    var renderImages = images.map(function(item) {
+      return (
+        <div>
+          <img
+            style={{borderRadius: "15px"}}
+            src={item}
+            alt="Giphy" />
+          <br></br>
+        </div>
+        )
+    });
+    return (
+      <div style={{textAlign: "center"}}>
+          {renderImages}
+      </div>
+    )
+  }
+});
+
+ReactDOM.render(<Root />, document.getElementById('giphy'));
