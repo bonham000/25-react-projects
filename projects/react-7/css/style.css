@@ -1,0 +1,31 @@
+body {
+  background: #323232;
+  min-width: 1000px;
+}
+
+.container {
+  width: 900px;
+  height: 750px;
+  border: 1px solid black;
+  margin: 65px auto;
+}
+
+button:hover {
+  cursor: pointer;
+  color: #0EB0D6 !important;
+  background: #191919 !important;
+}
+
+button:focus {
+  outline: none;
+}
+
+a, a:visited {
+  color: #95949D;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0EB0D6;
+  text-decoration: underline;
+}

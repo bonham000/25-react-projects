@@ -1,0 +1,30 @@
+$tan: #FCFFC5;
+$blue: #0EB0D6;
+$grey: #95949D;
+
+body {
+  background: rgb(50,50,50);
+  min-width: 1000px;
+}
+.container {
+  width: 900px;
+  height: 750px;
+  border: 1px solid black;
+  margin: 65px auto;
+}
+button:hover {
+  cursor: pointer;
+  color: $blue !important;
+  background: rgb(25,25,25) !important;
+}
+button:focus {
+  outline: none;
+}
+a, a:visited {
+  color: $grey;
+  text-decoration: none;
+}
+a:hover {
+  color: $blue;
+  text-decoration: underline;
+}

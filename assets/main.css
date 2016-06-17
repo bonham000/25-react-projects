@@ -24,10 +24,13 @@ h1 {
 	margin-bottom: 20px;
 }
 .projectList {
-	width: 450px;
+	width: 550px;
 	margin-top: 335px;
 	margin-left: auto;
 	margin-right: auto;
+}
+.innerWrapper {
+	margin-left: 35px;
 }
 .title {
 	font-family: proxima-nova, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
