@@ -1,0 +1,188 @@
+
+var Root = React.createClass({
+  getInitialState: function() {
+    return {
+      userData: {firstName: '', lastName: '', birthday: '', origin: ''},
+      firstName: '',
+      lastName: '',
+      birthday: '',
+      origin: '',
+      titleDisplay: '',
+      formOneDisplay: '',
+      formTwoDisplay: 'none',
+      finalDisplay: 'none'
+    }
+  },
+  handleFirstName: function(event) {
+    this.setState({firstName: event.target.value});
+  },
+  handleLastName: function(event) {
+    this.setState({lastName: event.target.value});
+  },
+  submitFormOne: function(event) {
+    event.preventDefault();
+    var newDataOne = this.state.userData;
+    newDataOne.firstName = this.state.firstName;
+    newDataOne.lastName  = this.state.lastName;
+    this.setState({userData: newDataOne,
+                   firstName: '',
+                   lastName: '',
+                   formOneDisplay: 'none',
+                   formTwoDisplay: ''});
+  },
+  handleBirthday: function(event) {
+    this.setState({birthday: event.target.value});
+  },
+  handleOrigin: function(event) {
+    this.setState({origin: event.target.value});
+  },
+  submitFormTwo: function(event) {
+    event.preventDefault();
+    var newDataTwo = this.state.userData;
+    newDataTwo.birthday = this.state.birthday;
+    newDataTwo.origin   = this.state.origin;
+    this.setState({userData: newDataTwo,
+                   birthday: '',
+                   origin: '',
+                   formTwoDisplay: 'none',
+                   titleDisplay: 'none',
+                   finalDisplay: ''});
+  },
+  reset: function(event) {
+    event.preventDefault();
+    this.setState({
+      userData: {firstName: '', lastName: '', birthday: '', origin: ''},
+      firstName: '',
+      lastName: '',
+      birthday: '',
+      origin: '',
+      titleDisplay: '',
+      formOneDisplay: '',
+      formTwoDisplay: 'none',
+      finalDisplay: 'none'
+    });
+    console.log("Form Reset");
+  },
+  render: function() {
+    var mainStyle = {
+      textAlign: "center",
+      marginTop: "150px",
+    };
+    var titleStyle = { 
+      display: this.state.titleDisplay
+    };
+    var formOneStyle = {
+      display: this.state.formOneDisplay,
+      marginTop: "35px",
+      fontSize: "25px"
+    };
+    var formTwoStyle = {
+      display: this.state.formTwoDisplay,
+      marginTop: "35px",
+      fontSize: "25px"
+    };
+    var inputStyle = {
+      marginLeft: "15px"
+    };
+    var finalStyle = {
+      display: this.state.finalDisplay
+    };
+    return (
+      <div style = {mainStyle}>
+        <h1 style = {titleStyle}>This is a simple form service built with React</h1>
+        <form
+          onSubmit = {this.submitFormOne}
+          style = {formOneStyle} >
+          <label>Type your first name:</label>
+          <input
+            type = "text"
+            style = {inputStyle}
+            value = {this.state.firstName}
+            onChange = {this.handleFirstName}/>
+          
+          <br></br><br></br>
+          <label>Type your last name:</label>
+          <input
+            type = "text"
+            style = {inputStyle}
+            value = {this.state.lastName}
+            onChange = {this.handleLastName}/>
+          
+          <br></br><br></br>
+          <button
+            style = {{marginTop: "5px"}}
+            className="btn btn-lg btn-success">Proceed</button>
+        </form>
+        <form
+          onSubmit = {this.submitFormTwo}
+          style = {formTwoStyle} >
+          <label>Type the year of your birthday:</label>
+          <input
+            type = "text"
+            style = {inputStyle}
+            value = {this.state.birthday}
+            onChange = {this.handleBirthday}/>
+          
+          <br></br><br></br>
+          <label>Type where you are from:</label>
+          <input
+            type = "text"
+            style = {inputStyle}
+            value = {this.state.origin}
+            onChange = {this.handleOrigin}/>
+          
+          <br></br><br></br>
+          <button
+            style = {{marginTop: "5px"}}
+            className = "btn btn-lg btn-success">Proceed</button>
+        </form>
+        <div style = {finalStyle}>
+          <Results
+            firstName = {this.state.userData.firstName}
+            lastName  = {this.state.userData.lastName}
+            birthday  = {this.state.userData.birthday}
+            origin    = {this.state.userData.origin}
+            reset     = {this.reset} />
+        </div>
+      </div>
+    )
+  }
+});
+
+var Results = React.createClass({
+  render: function() {
+    var birth = parseInt(this.props.birthday);
+    var age;
+    var date = new Date();
+    var origin = this.props.origin;    
+    
+    if (origin.length === 0) {
+      origin = <h2>We don't know where you are from...</h2>
+    }
+    else if (origin.length !== 0) {
+      origin = <h2>You are from {origin}.</h2>
+    }
+    
+    if (isNaN(birth)) {
+      age = <h2>We couldn't understand your birthday...</h2>
+    }
+    else {
+      var yearsOld = parseInt(date.toString().substr(10, 5)) - birth;
+      age = <h2>You are {yearsOld}.</h2>
+    }
+    
+    return (
+      <div>
+        <h1>Hello {this.props.firstName} {this.props.lastName}!</h1>
+        {origin}
+        {age}
+        <button
+          className = "btn btn-lg btn-danger"
+          style = {{marginTop: "25px"}}
+          onClick = {this.props.reset}>Reset Form</button>
+      </div>
+    )
+  }
+});
+
+ReactDOM.render(<Root />, document.getElementById('main'));
