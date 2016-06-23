@@ -1,0 +1,100 @@
+// Define Styles: 
+$border: 1px solid rgba(25,25,25,0.9);
+// Define Colors:
+$heavy: #272932;
+$bright-blue: #00dffc;
+$tan: #fff1b9;
+$white: #FFFFF2;
+$yellow: #FFC857;
+$twitch: #6441a5;
+
+// Define Fonts:
+$Cormorant: 'Cormorant Garamond', serif;
+$Merriweather: 'Merriweather', serif;
+
+
+// Styling:
+body {
+  background: $twitch;
+  font-family: $Cormorant;
+  text-align: center;
+}
+.titleDiv {
+  background: $tan;
+  padding: 15px;
+  border: $border;
+  border-radius: 5px;
+}
+.title {
+  font-size: 65px;
+  font-weight: bold;
+  color: $twitch;
+  font-family: $Merriweather;
+  margin: 0;
+  padding: 0;
+}
+.btnDiv {
+  margin-top: 15px;
+  font-family: $Merriweather;
+  button {
+    font-size: 26px;
+    padding: 10px;
+    border: $border;
+    background: $heavy;
+    color: $white;
+    border-radius: 5px;
+    width: 250px;
+  }
+  .streamingBtn {
+    margin-right: 5px;
+  }
+  .allBtn {
+    margin-left: 5px;
+  }
+  button:hover {
+    color: $bright-blue;
+    cursor: pointer;
+  }
+}
+img {
+  width: 150px;
+  border-radius: 5px;
+}
+.resultsWrapper {
+  border: $border;
+  border-radius: 5px;
+  margin: 20px 25px;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  .imgContainer {
+    width: 150px;
+    height: 150px;
+  }
+  .userWrapper {
+    text-align: left;
+    padding-left: 20px;
+    .username {
+      font-size: 30px;
+      font-family: $Merriweather;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+    .streaming {
+      margin: 7px 0 5px 0;
+      font-size: 20px;
+      font-family: $Merriweather;
+    }
+    .bio {
+      font-size: 18px;
+      margin: 5px 0 0 0;
+    }
+  }
+}
+.resultsWrapper:hover {
+  cursor: pointer;
+  box-shadow: 6px 6px 6px $heavy;
+}
+

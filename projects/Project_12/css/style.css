@@ -1,0 +1,91 @@
+body {
+  background: linear-gradient(#33E3FC, #47b8e0) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Montserrat", sans-serif;
+  color: #3f4040;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.title {
+  margin-top: 45px;
+  margin-bottom: -5px;
+  font-size: 50px;
+  color: #f94e3f;
+}
+
+.conditions {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.weather {
+  font-size: 40px;
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+
+img {
+  width: 150px;
+  margin-top: 20px;
+  margin-bottom: -25px;
+}
+
+.temperature {
+  font-size: 55px;
+  margin-bottom: 0;
+}
+
+.toggleTemp {
+  width: 225px;
+  margin: -25px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.toggleTemp div {
+  font-family: "Pridi", serif;
+}
+.toggleTemp div p:hover {
+  color: #f94e3f;
+  cursor: pointer;
+}
+
+.data {
+  margin-top: 20px;
+}
+
+.coordinates, .city {
+  font-size: 22px;
+  margin: 5px 0 5px 0;
+}
+
+.credits {
+  position: fixed;
+  bottom: 0;
+  height: 35px;
+  width: 100%;
+  background: rgba(39, 41, 50, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.credits p {
+  font-family: Avenir, arial;
+  font-size: 16px;
+  text-align: center;
+  color: #c8c8c8;
+}
+.credits a, .credits a:visited {
+  color: #c8c8c8;
+  text-decoration: none;
+}
+.credits a:hover {
+  color: #f94e3f;
+  text-decoration: underline;
+}

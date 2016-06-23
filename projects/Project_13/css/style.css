@@ -1,0 +1,132 @@
+body {
+  background: #FFFFF2;
+  color: #274555;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.title {
+  margin: 35px auto 20px auto;
+  font-size: 50px;
+}
+
+.subtitle {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.inputBox {
+  font-size: 22px;
+  width: 350px;
+  padding: 10px;
+  border: 1px solid rgba(39, 41, 50, 0.15);
+  border-radius: 3px;
+}
+
+button {
+  font-size: 22px;
+  padding: 10px 15px 10px 15px;
+  border: none;
+  border-radius: 3px;
+  font-family: "Trirong", serif;
+  background: rgba(39, 41, 50, 0.95);
+  color: #FFFFF2;
+}
+
+button:hover {
+  cursor: pointer;
+  background: rgba(39, 41, 50, 0.85);
+}
+
+.submitBtn {
+  margin-left: 8px;
+}
+
+.randomBtn {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.counter {
+  margin-left: 7px;
+  margin-top: -5px;
+  font-size: 20px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 5px;
+  margin-bottom: 3px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #272932;
+  margin-top: -5px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+.resultsContainer {
+  padding: 15px;
+}
+
+.resultHead .titleHead {
+  width: 150px;
+  text-align: right;
+  padding-left: 10px;
+  font-family: 26px;
+  font-family: "Ubuntu", sans-serif;
+}
+.resultHead .infoHead {
+  text-align: left;
+  padding-left: 25px;
+}
+
+.resultBox {
+  padding-top: 5px;
+}
+.resultBox .titleCol {
+  width: 150px;
+  padding-right: 10px;
+  text-align: right;
+  font-size: 22px;
+  font-family: "Ubuntu", sans-serif;
+  color: #191919;
+  background: rgba(39, 41, 50, 0.05);
+  border: 1px solid rgba(39, 41, 50, 0.1);
+}
+.resultBox .infoCol {
+  text-align: left;
+  background: rgba(39, 41, 50, 0.95);
+  border: 1px solid rgba(250, 250, 250, 0.1);
+  color: #FFFFF2;
+  font-family: "Trirong", serif;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.resultBox td {
+  padding: 10px 5px 10px 5px;
+}
+.resultBox .infoCol:hover {
+  cursor: pointer;
+  background: rgba(39, 41, 50, 0.85);
+}

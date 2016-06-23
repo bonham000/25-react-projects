@@ -1,0 +1,99 @@
+
+// Define Colors:
+$heavy: #272932;
+$red-orange: #f94e3f;
+$pink: #ff7473;
+$tan: #fff1b9;
+$brown: #37352B;
+$green-bright: #0BDCA8;
+$grey: #59656F;
+$mint: #67D5B5;
+
+// Define Fonts:
+$Ubuntu: 'Ubuntu', sans-serif;
+
+// Styling:
+body {
+  min-width: 700px;
+  background: $red-orange;
+  color: $heavy;
+}
+.calcWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  .case {
+    width: 450px;
+    background: $brown;
+    border: 1px solid $heavy;
+    border-radius: 2px;
+    text-align: center;
+    padding-bottom: 15px;
+    p {
+      text-align: center;
+      font-family: $Ubuntu;
+      font-size: 38px;
+      color: $green-bright;
+      margin: 10px;
+    }
+    .inputField {
+      width: 380px;
+      font-size: 30px;
+      padding: 5px 15px 5px 0;
+      text-align: right;
+      margin-bottom: 5px;
+      border: 1px solid $green-bright;
+      background: $grey;
+      color: $heavy;
+    }
+    .calcUI {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      space-between: space-between;
+      justify-content: center;
+      button {
+        width: 100px;
+        height: 100px;
+        border: 1px solid $heavy;
+        background: $tan;
+        font-family: $Ubuntu;
+        font-size: 40px;
+      }
+      button:hover {
+        background: $mint;
+        color: $heavy;
+        cursor: pointer;
+      }
+      .operationBtn {
+      }
+      .delBtn {
+        font-size: 30px;
+      }
+      .clearBtn {
+        font-size: 35px;
+      }
+      .delBtn:hover, .clearBtn:hover {
+        background: $pink;
+      }
+      .operationBtn:hover {
+        background: rgb(190,190,190);
+      }
+      button:focus {
+        z-index: 3;
+      }
+    }
+    .enterBtn {
+      width: 400px;
+      height: 100px;
+      border: 1px solid $heavy;
+      background: $mint;
+      font-family: $Ubuntu;
+      font-size: 35px;
+    }
+    .enterBtn:hover {
+      background: $green-bright;
+      cursor: pointer;
+    }
+  }
+}

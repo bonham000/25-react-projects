@@ -1,0 +1,83 @@
+body {
+  min-width: 700px;
+  background: #f94e3f;
+  color: #272932;
+}
+
+.calcWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.calcWrapper .case {
+  width: 450px;
+  background: #37352B;
+  border: 1px solid #272932;
+  border-radius: 2px;
+  text-align: center;
+  padding-bottom: 15px;
+}
+.calcWrapper .case p {
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 38px;
+  color: #0BDCA8;
+  margin: 10px;
+}
+.calcWrapper .case .inputField {
+  width: 380px;
+  font-size: 30px;
+  padding: 5px 15px 5px 0;
+  text-align: right;
+  margin-bottom: 5px;
+  border: 1px solid #0BDCA8;
+  background: #59656F;
+  color: #272932;
+}
+.calcWrapper .case .calcUI {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  space-between: space-between;
+  justify-content: center;
+}
+.calcWrapper .case .calcUI button {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #272932;
+  background: #fff1b9;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 40px;
+}
+.calcWrapper .case .calcUI button:hover {
+  background: #67D5B5;
+  color: #272932;
+  cursor: pointer;
+}
+.calcWrapper .case .calcUI .delBtn {
+  font-size: 30px;
+}
+.calcWrapper .case .calcUI .clearBtn {
+  font-size: 35px;
+}
+.calcWrapper .case .calcUI .delBtn:hover, .calcWrapper .case .calcUI .clearBtn:hover {
+  background: #ff7473;
+}
+.calcWrapper .case .calcUI .operationBtn:hover {
+  background: #bebebe;
+}
+.calcWrapper .case .calcUI button:focus {
+  z-index: 3;
+}
+.calcWrapper .case .enterBtn {
+  width: 400px;
+  height: 100px;
+  border: 1px solid #272932;
+  background: #67D5B5;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 35px;
+}
+.calcWrapper .case .enterBtn:hover {
+  background: #0BDCA8;
+  cursor: pointer;
+}

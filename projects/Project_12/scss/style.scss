@@ -1,0 +1,117 @@
+
+// Define Colors:
+$heavy: #272932;
+$dark: #3f4040;
+$dark-light: #5e5e5f;
+$red-orange: #f94e3f;
+$red: #ff4e50;
+$purple: #9055A2;
+$dark-purple: #34314c;
+$sky-blue: #47b8e0;
+$bright-blue: #00dffc;
+$dark-blue: #274555;
+$gold: #ffc952;
+$pink: #ff7473;
+$bright-pink: #e94e77;
+$mint: #67D5B5;
+$tan: #fff1b9;
+$white: rgb(200, 200, 200);
+
+// Define Fonts:
+$Montserrat: 'Montserrat', sans-serif;
+$Pridi: 'Pridi', serif;
+
+// Styling:
+
+body {
+  background: linear-gradient(#33E3FC, $sky-blue) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: $Montserrat;
+  color: $dark;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.title {
+  margin-top: 45px;
+  margin-bottom: -5px;
+  font-size: 50px;
+  color: $red-orange;
+}
+.conditions {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+.weather {
+  font-size: 40px;
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+img {
+  width: 150px;
+  margin-top: 20px;
+  margin-bottom: -25px;
+}
+.temperature {
+  font-size: 55px;
+  margin-bottom: 0;
+}
+.toggleTemp {
+  width: 225px;
+  margin: -25px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  div {
+    font-family: $Pridi;
+    p:hover {
+      color: $red-orange;
+      cursor: pointer;
+    }
+  }
+}
+.data {
+  margin-top: 20px;
+}
+.coordinates, .city {
+  font-size: 22px;
+  margin: 5px 0 5px 0;
+}
+.credits {
+  position: fixed;
+  bottom: 0;
+  height: 35px;
+  width: 100%;
+  background: rgba(39, 41, 50, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-family: Avenir, arial;
+    font-size: 16px;
+    text-align: center;
+    color: $white;
+  }
+  a, a:visited {
+    color: $white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $red-orange;
+    text-decoration: underline;
+  }
+}
+
+
+
+
+
+
+
+
+
+

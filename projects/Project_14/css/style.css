@@ -1,0 +1,89 @@
+body {
+  background: #6441a5;
+  font-family: "Cormorant Garamond", serif;
+  text-align: center;
+}
+
+.titleDiv {
+  background: #fff1b9;
+  padding: 15px;
+  border: 1px solid rgba(25, 25, 25, 0.9);
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 65px;
+  font-weight: bold;
+  color: #6441a5;
+  font-family: "Merriweather", serif;
+  margin: 0;
+  padding: 0;
+}
+
+.btnDiv {
+  margin-top: 15px;
+  font-family: "Merriweather", serif;
+}
+.btnDiv button {
+  font-size: 26px;
+  padding: 10px;
+  border: 1px solid rgba(25, 25, 25, 0.9);
+  background: #272932;
+  color: #FFFFF2;
+  border-radius: 5px;
+  width: 250px;
+}
+.btnDiv .streamingBtn {
+  margin-right: 5px;
+}
+.btnDiv .allBtn {
+  margin-left: 5px;
+}
+.btnDiv button:hover {
+  color: #00dffc;
+  cursor: pointer;
+}
+
+img {
+  width: 150px;
+  border-radius: 5px;
+}
+
+.resultsWrapper {
+  border: 1px solid rgba(25, 25, 25, 0.9);
+  border-radius: 5px;
+  margin: 20px 25px;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.resultsWrapper .imgContainer {
+  width: 150px;
+  height: 150px;
+}
+.resultsWrapper .userWrapper {
+  text-align: left;
+  padding-left: 20px;
+}
+.resultsWrapper .userWrapper .username {
+  font-size: 30px;
+  font-family: "Merriweather", serif;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.resultsWrapper .userWrapper .streaming {
+  margin: 7px 0 5px 0;
+  font-size: 20px;
+  font-family: "Merriweather", serif;
+}
+.resultsWrapper .userWrapper .bio {
+  font-size: 18px;
+  margin: 5px 0 0 0;
+}
+
+.resultsWrapper:hover {
+  cursor: pointer;
+  box-shadow: 6px 6px 6px #272932;
+}
