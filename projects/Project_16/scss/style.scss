@@ -1,0 +1,92 @@
+// Define Colors:
+$heavy: #272932;
+$gold: #ffc952;
+$white: #FFFFF2;
+
+// Define Fonts:
+$Rasa: 'Rasa', serif;
+//Styling:
+body {
+  background: $heavy;
+  background-color: #0074cc;
+  background-color: #e00025;
+  background-image: url("http://www.transparenttextures.com/patterns/shattered-dark.png");
+  color: $gold;
+  padding: 50px;
+  font-family: $Rasa;
+  font-size: 25px;
+  min-width: 1000px;
+}
+.title {
+	font-size: 65px;
+	color: $white;
+	margin-left: 25px;
+}
+hr {
+	margin-top: 40px;
+	margin-bottom: 2.5px;
+}
+.speedControl {
+	float: right;
+	margin-top: 10px;
+	.checkInput {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		input {
+			margin-top: 10px;
+		}
+		p {
+			margin-left: 8px;
+			margin-bottom: 16px;
+			color: #4EFFAF;
+		}
+	}
+}
+.control {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	margin-left: 25px;
+	.breakControl {
+		margin-left: 50px;
+	}
+	.startTimer {
+		margin-left: 50px;
+	}
+	.startBtn {
+		color: $heavy;
+		padding: 7px;
+		margin: 5px;
+		background: $white;
+		border: 1px solid rgba(20,20,20,0.05);
+		text-align: center;
+		width: 135px;
+		height: 51px;
+	}
+	.startBtn:hover {
+		border: none;
+		background: #4EFFAF;
+	}
+}
+button {
+	color: $heavy;
+	padding: 7px;
+	margin: 5px;
+	background: $white;
+	border: 1px solid rgba(20,20,20,0.05);
+}
+.timeBtn {
+	width: 40px;
+	text-align: center;
+}
+.timer {
+	margin-left: 25px;
+	margin-top: 25px;
+}
+.plus:hover {
+	background: #59BAFF;
+}
+.minus:hover {
+	background: #FF4E57;
+}

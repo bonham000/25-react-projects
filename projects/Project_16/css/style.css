@@ -1,0 +1,93 @@
+body {
+  background: #272932;
+  background-color: #0074cc;
+  background-color: #e00025;
+  background-image: url("http://www.transparenttextures.com/patterns/shattered-dark.png");
+  color: #ffc952;
+  padding: 50px;
+  font-family: "Rasa", serif;
+  font-size: 25px;
+  min-width: 1000px;
+}
+
+.title {
+  font-size: 65px;
+  color: #FFFFF2;
+  margin-left: 25px;
+}
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 2.5px;
+}
+
+.speedControl {
+  float: right;
+  margin-top: 10px;
+}
+.speedControl .checkInput {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.speedControl .checkInput input {
+  margin-top: 10px;
+}
+.speedControl .checkInput p {
+  margin-left: 8px;
+  margin-bottom: 16px;
+  color: #4EFFAF;
+}
+
+.control {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-left: 25px;
+}
+.control .breakControl {
+  margin-left: 50px;
+}
+.control .startTimer {
+  margin-left: 50px;
+}
+.control .startBtn {
+  color: #272932;
+  padding: 7px;
+  margin: 5px;
+  background: #FFFFF2;
+  border: 1px solid rgba(20, 20, 20, 0.05);
+  text-align: center;
+  width: 135px;
+  height: 51px;
+}
+.control .startBtn:hover {
+  border: none;
+  background: #4EFFAF;
+}
+
+button {
+  color: #272932;
+  padding: 7px;
+  margin: 5px;
+  background: #FFFFF2;
+  border: 1px solid rgba(20, 20, 20, 0.05);
+}
+
+.timeBtn {
+  width: 40px;
+  text-align: center;
+}
+
+.timer {
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+.plus:hover {
+  background: #59BAFF;
+}
+
+.minus:hover {
+  background: #FF4E57;
+}
