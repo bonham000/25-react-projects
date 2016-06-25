@@ -1,0 +1,122 @@
+
+// Define Colors:
+$heavy: #272932;
+$white: #FFFFF2;
+$mint: #67D5B5;
+$background: #1E152A;
+$orange: #FC6448;
+$red: #ff4e50;
+
+// Define Fonts:
+$Montserrat: 'Montserrat', sans-serif;
+$Pridi: 'Pridi', serif;
+
+//Styling:
+body {
+	background: $background;
+	color: $white;
+	padding: 50px;
+	font-family: $Montserrat;
+	font-size: 45px;
+	text-align: center;
+	padding-bottom: 150px;
+	min-width: 1000px;
+}
+.title {
+	font-size: 60px;
+	color: $orange;
+}
+input, textarea {
+	color: $heavy;
+	margin: 5px;
+	padding: 5px;
+	font-size: 25px;
+	width: 500px;
+}
+button {
+	color: $heavy;
+	margin: 5px;
+	padding: 10px;
+	background: $mint;
+	border: none;
+}
+button:hover {
+	background: $orange;
+}
+
+.example-enter {
+  	opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+	opacity: 1;
+	transition: opacity 700ms ease-in;
+}
+
+.example-leave {
+  	opacity: 1;
+}
+
+.example-leave.example-leave-active {
+	opacity: 0.01;
+	transition: opacity 300ms ease-in;
+}
+
+.note {
+	color: $heavy;
+	text-align: left;
+	padding: 6px 10px 1px 15px;
+	border-radius: 3px;
+	margin-top: 7px;
+	position: relative;
+	.noteTitle {
+		margin-right: 25px;
+	}
+	.timestamp {
+		font-size: 20px;
+		font-family: $Pridi;
+		position: absolute;
+		right: 12px;
+		top: 10px;
+	}
+	.noteControl {
+		position: absolute;
+		right: 10px;
+		top: 14px;
+		.removeNote {
+			font-size: 22px;
+			font-family: $Pridi;
+		}
+		.expandNote {
+			font-size: 22px;
+			font-family: $Pridi;
+			margin-right: 10px;
+		}
+		.expandNote:hover {
+			cursor: pointer;
+			color: #BE35EF;
+		}
+		.removeNote:hover {
+			cursor: pointer;
+			color: $red;
+		}
+	}
+	.noteDetails {
+		color: $heavy;
+		font-family: Avenir;
+		padding: 15px;
+		font-size: 22px;
+		margin-left: 10px;
+	}
+	.noteDivider {
+		height: 1px;
+		background: rgba(30,30,30,0.5);
+		border: none;
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+}
+
+
+
+

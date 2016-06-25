@@ -1,0 +1,180 @@
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
+class App extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			newTitle: '',
+			newDetails: '',
+			newNote: '',
+			notes: []
+		};
+		this.addNote = this.addNote.bind(this);
+		this.newTitle = this.newTitle.bind(this);
+		this.newDetails = this.newDetails.bind(this);
+		this.removeNote = this.removeNote.bind(this);
+		this.showDetails = this.showDetails.bind(this);
+		this.handleKeypress = this.handleKeypress.bind(this);
+	}
+	addNote(event) {
+		if (event != undefined) {
+			event.preventDefault();
+		}
+
+		if (this.state.newTitle.length > 0) {
+
+			var date = new Date();
+			var timeStamp = date.toString().substr(0, 25);
+
+			var newDetails = this.state.newDetails;
+
+			if (newDetails.length === 0) {
+				newDetails = "(no details)"
+			}
+
+			var newNote = [timeStamp, this.state.newTitle, newDetails];
+			var currNotes = this.state.notes.slice(0);
+			currNotes[currNotes.length] = newNote;
+
+			this.setState({
+				notes: currNotes,
+				newTitle: '',
+				newDetails: ''
+			});
+
+		}
+	}
+	newTitle(event) {
+		this.setState({
+			newTitle: event.target.value
+		});
+	}
+	newDetails(event) {
+
+		this.setState({
+			newDetails: event.target.value
+		})
+	}
+	handleKeypress(event) {
+		var key = event.keyCode;
+
+		if (key === 13) {
+			event.preventDefault();
+			this.addNote();
+		}
+
+	}
+	removeNote(index) {
+		var currNotes = this.state.notes.slice();
+		currNotes.splice(index, 1);
+		this.setState({
+			notes: currNotes
+		});
+	}
+	showDetails(className, spanID, noteID) {
+		
+		if ( !document.getElementById(className).classList.contains('visible') ) {
+			document.getElementById(className).setAttribute('class', 'visible');
+			document.getElementById(className).style.display = "block";
+			document.getElementById(spanID).innerHTML = "(Hide Details)";
+			document.getElementById(noteID).style.background = "#FFD84B";
+		}
+		else {
+			document.getElementById(className).className = '';
+			document.getElementById(className).style.display = "none";
+			document.getElementById(spanID).innerHTML = "(Show Details)";
+			document.getElementById(noteID).style.background = "#ffc952";
+		}
+
+	}
+	render() {
+		return (
+			<div>
+				<h1 className = "title">Timestamped Notes App</h1>
+				<NoteEntry
+					addNote = {this.addNote}
+					newTitle = {this.state.newTitle}
+					handleTitle = {this.newTitle}
+					newDetails = {this.state.newDetails}
+					handleDetails = {this.newDetails}
+					handleKeypress = {this.handleKeypress} />
+				<NotePresentation
+					notes = {this.state.notes}
+					removeNote = {this.removeNote}
+					showDetails = {this.showDetails} />
+			</div>
+		);
+	}
+};
+
+class NoteEntry extends React.Component {
+	render() {
+		return (
+			<div>
+				<form onSubmit = {this.props.addNote.bind(this)} >
+				<input
+					type = "text"
+					autoFocus
+					value = {this.props.newTitle}
+					onChange = {this.props.handleTitle.bind(this)}
+					placeholder = "Note Title" /><br />
+				<textarea
+					type = "text"
+					className = "detailsInput"
+					value = {this.props.newDetails}
+					onKeyDown = {this.props.handleKeypress.bind(this)}
+					onChange = {this.props.handleDetails.bind(this)}
+					placeholder = "Note Details"></textarea><br />
+				<button>Add Note</button>
+				</form>
+				<hr />
+			</div>
+		);
+	}
+};
+
+class NotePresentation extends React.Component {
+	render() {
+		var showStyle = {
+			display: "none"
+		}
+		var noteStyle = {
+			background: "#ffc952"
+		}
+		var addNotes = this.props.notes.map(function(note, index) {
+			return (
+				<div key = {note[0]} className = "note" id = {note[0].replace(/\s/g, '') + 's'} style = {noteStyle}>
+					<p className = "noteTitle">{note[1]}</p>
+						<div className = "noteControl">
+							<span
+								className = "expandNote"
+								id = {note[1].replace(/\s/g, '')}
+								onClick = {this.props.showDetails.bind(this, note[0].replace(/\s/g, ''), note[1].replace(/\s/g, ''), note[0].replace(/\s/g, '') + 's')}>(Show Details)
+							</span>
+							<span
+								className = "removeNote"
+								onClick = {this.props.removeNote.bind(this, index)}>(Remove Note)
+							</span>
+						</div>
+						<span className = "timestamp">Recorded: {note[0]}</span>
+					<div>
+						<div id = {note[0].replace(/\s/g, '')} style = {showStyle}>
+							<hr className = "noteDivider" /><div className = "noteDetails">Details: {note[2]}</div>
+						</div>
+					</div>
+				</div>
+			);
+		}.bind(this));
+		return (
+			<div>
+				<div>
+					<ReactCSSTransitionGroup transitionName = "example" transitionEnterTimeout = {700} transitionLeaveTimeout = {300}>
+						{addNotes}
+					</ReactCSSTransitionGroup>
+				</div>
+			</div>
+		);
+	}
+};
+
+ReactDOM.render(<App />, document.getElementById('main'));
