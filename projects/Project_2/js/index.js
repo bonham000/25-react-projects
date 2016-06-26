@@ -20,15 +20,7 @@ var Create = React.createClass({
     };
 
     var divs = array.map(function (val, index) {
-      return React.createElement(
-        'div',
-        { style: randColor(), className: 'box', id: index },
-        React.createElement(
-          'p',
-          { className: 'number' },
-          index + 1
-        )
-      );
+      return React.createElement('div', { style: randColor(), className: 'box', id: index });
     }, this);
 
     return React.createElement(
@@ -45,7 +37,8 @@ var Main = React.createClass({
 
   getInitialState: function getInitialState() {
     return {
-      count: 5
+      count: 5,
+      subtract: false
     };
   },
   handleChange: function handleChange(event) {
@@ -53,29 +46,44 @@ var Main = React.createClass({
       this.setState({ count: event.target.value });
     }
   },
+  autoPlay: function autoPlay() {
+
+    var play = setInterval(function () {
+
+      var count = this.state.count;
+      var newCount;
+
+      if (count === 75) {
+        this.setState({
+          subtract: true
+        });
+      } else if (count === 0) {
+        this.setState({
+          subtract: false
+        });
+      }
+
+      if (this.state.subtract) {
+        newCount = count - 1;
+      } else if (!this.state.subtract) {
+        newCount = count + 1;
+      }
+
+      this.setState({
+        count: newCount
+      });
+    }.bind(this), 40);
+  },
+
   render: function render() {
     return React.createElement(
       'div',
       { className: 'mainContainer' },
-      React.createElement(
-        'h1',
-        null,
-        'Create Boxes with React!'
-      ),
-      React.createElement(
-        'h2',
-        null,
-        'Type the number of boxes you would like to generate in the box below'
-      ),
-      React.createElement(
-        'form',
-        { onSubmit: this.submitForm },
-        React.createElement('input', { type: 'text',
-          value: this.state.count,
-          onChange: this.handleChange })
-      ),
       React.createElement(Create, { count: this.state.count })
     );
+  },
+  componentDidMount: function componentDidMount() {
+    this.autoPlay();
   }
 
 });

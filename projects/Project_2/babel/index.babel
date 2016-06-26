@@ -17,9 +17,7 @@ var Create = React.createClass({
       
     var divs  = array.map(function(val, index) {
       return (
-        <div style={randColor()} className="box" id={index}>
-          <p className="number">{index + 1}</p>
-        </div>
+        <div style={randColor()} className="box" id={index}></div>
       )
     }, this);
     
@@ -35,7 +33,8 @@ var Create = React.createClass({
 var Main = React.createClass({
   getInitialState: function () {
     return {
-      count: 0,
+      count: 5,
+      subtract: false
     }
   },
   handleChange: function(event) {
@@ -43,19 +42,47 @@ var Main = React.createClass({
       this.setState({count: event.target.value});
     }
   },
+  autoPlay: function() {
+    
+    var play = setInterval(function() {
+      
+      var count = this.state.count;
+      var newCount;
+      
+      if (count === 75) {
+        this.setState({
+          subtract: true
+        })
+      }
+      else if (count === 0) {
+        this.setState({
+          subtract: false
+        })
+      }
+      
+      if (this.state.subtract) {
+        newCount = count - 1;
+      }
+      else if (!this.state.subtract) {
+        newCount = count + 1;
+      }
+      
+      this.setState({
+        count: newCount
+      });
+      
+    }.bind(this), 40);
+  },
+  
   render: function () {    
     return (
       <div className="mainContainer">
-        <h1>Create Boxes with React!</h1>
-        <h2>Type the number of boxes you would like to generate in the box below</h2>
-        <form onSubmit={this.submitForm}>
-          <input type="text"
-            value={this.state.count}
-            onChange={this.handleChange}/>
-        </form>
         <Create count={this.state.count}/>
       </div>
     )
+  },
+  componentDidMount: function() {
+    this.autoPlay();
   }
   
 });

@@ -1,19 +1,51 @@
 body {
-	background: rgb(40,40,40);
-    font-family: proxima-nova, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	background: rgb(30,30,30);
+  font-family: proxima-nova, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 	text-align: center;
 	color: rgb(114, 223, 250);
+	min-width: 1200px;
+	padding-bottom: 25px;
 }
 .header {
 	position: fixed;
-	top: 0;
-	width: 600px;
-	left: 50%;
-	margin-left: -300px;
-	background: rgb(40,40,40);
-	border-bottom: 1px solid white;
+	left: 0;
+	width: 400px;
+	height: 100%;
+	background: rgb(30,30,30);
+	border-right: 1px solid white;
+	padding-top: 5px;
 }
-
+.about {
+	width: 350px;
+	margin: 25px auto;
+}
+.aboutText {
+	color: white;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 28px;
+	color: rgb(150,150,150);
+}
+.creditsDiv {
+	position: fixed;
+	top: 8px;
+	right: 15px;
+	font-size: 18px;
+	font-family: 'Quicksand', sans-serif;
+	text-align: right;
+	z-index: 2;
+}
+.credits {
+	margin-top: 2px;
+	margin-bottom: 0;
+}
+.credits a, .credits a:visited {
+	color: rgb(150,150,150);
+	text-decoration: none;
+}
+.credits a:hover {
+	text-decoration: underline;
+	color: rgb(114, 223, 250);
+}
 img {
 	width: 200px;
 	margin-top: 25px;
@@ -24,31 +56,80 @@ h1 {
 	margin-bottom: 20px;
 }
 .projectList {
-	width: 550px;
-	margin-top: 335px;
-	margin-left: auto;
-	margin-right: auto;
+	position: absolute;
+	left: 435px;
+	min-width: 700px;
+	padding-top: 15px;
+	background: rgb(30,30,30);
+	z-index: 1;
 }
-.innerWrapper {
-	margin-left: 25px;
-}
-.title {
-	font-family: proxima-nova, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-	font-size: 26px;
-}
-p {
-	margin-top: 5px;
-	margin-bottom: 0;
+
+td {
 	font-family: 'Quicksand', sans-serif;
-	text-align: left;
+	font-size: 27px;
+
 }
-a, a:visited {
-	font-size: 22px;
+.leftCol {
+	text-align: left;
+	padding-right: 5px;
+}
+.rightCol {
+	text-align: left;
+	padding-left: 5px;
+}
+.projectList a, .projectList a:visited {
 	color: white;
 	text-decoration: none;
 }
-
-a:hover {
+.projectList a:hover {
 	text-decoration: underline;
 	color: rgb(114, 223, 250);
 }
+#line {
+	width: 750px;
+	height: 1px;
+	margin-top: 25px;
+	background: white;
+}
+.content {
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-bottom: 25px;
+	width: 750px;
+	text-align: left;
+}
+.contentText {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 28px;
+	text-align: left;
+	color: rgb(200,200,200);
+	line-height: 120%;
+	text-indent: 25px;
+}
+.contentText a, .contentText a:visited {
+	color: rgb(114, 223, 250);
+}
+.contentText a:hover {
+	text-decoration: underline;
+	color: white;
+}
+.contentWrapper {
+	margin-bottom: 40px;
+}
+.resources {
+	border-top: 1px solid #FFFFF2;
+	padding-top: 10px;
+}
+.title h1 {
+	margin-bottom: 0px;
+}
+.subText {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 28px;
+	line-height: 120%;
+	margin-top: 5px;
+	color: rgb(200,200,200);
+}
+
+
+

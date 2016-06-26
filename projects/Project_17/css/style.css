@@ -1,0 +1,111 @@
+body {
+  background: #07324B;
+  font-family: "Baloo Bhai", cursive;
+  text-align: center;
+  min-width: 750px;
+  padding: 0;
+  margin: 0;
+}
+
+.selectPlayer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.95);
+  color: #FFFFF2;
+  font-size: 45px;
+  font-family: "Baloo Bhai", cursive;
+}
+.selectPlayer p {
+  margin-bottom: -15px;
+  margin-top: 105px;
+  color: #f94e3f;
+  font-size: 65px;
+}
+.selectPlayer .sides {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.selectPlayer .sides .chooseSide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #07324B;
+  border: none;
+  border-radius: 15px;
+  color: #1e1e1e;
+  width: 175px;
+  height: 165px;
+  font-size: 150px;
+  margin: 25px;
+  padding-top: 10px;
+}
+.selectPlayer .sides .chooseSide:hover {
+  color: #f94e3f;
+  background: #0a3c64;
+  cursor: pointer;
+}
+
+.container {
+  margin: 50px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 525px;
+  background: #07324B;
+}
+.container .gameBox {
+  background: #1e1e1e;
+  width: 150px;
+  height: 142px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 125px;
+  font-family: "Baloo Bhai", cursive;
+  padding-top: 8px;
+  color: #f94e3f;
+}
+.container .gameBox:hover {
+  background: #282828;
+  cursor: pointer;
+}
+
+.gameEnd {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.95);
+  color: #FFFFF2;
+  font-size: 45px;
+}
+.gameEnd h1 {
+  margin-bottom: -10px;
+  margin-top: 90px;
+  color: #ffc952;
+  font-size: 100px;
+}
+.gameEnd .replay {
+  font-size: 60px;
+  margin-top: 10px;
+  padding: 10px 35px;
+  font-family: "Baloo Bhai", cursive;
+  background: #07324B;
+  color: #f94e3f;
+  border-radius: 15px;
+  border: none;
+}
+.gameEnd .replay:hover {
+  cursor: pointer;
+  background: #0a3c64;
+}
+.gameEnd button:focus {
+  outline: none;
+}
