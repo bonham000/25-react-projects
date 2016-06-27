@@ -1,0 +1,212 @@
+body {
+  background: #fff1b9;
+  font-size: 25px;
+  font-family: "Ubuntu", sans-serif;
+  min-width: 1000px;
+}
+
+#winner {
+  display: none;
+}
+
+.resetScreen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.95);
+  font-size: 100px;
+  color: #FFFFF2;
+  text-align: center;
+  padding-top: 150px;
+  z-index: 5;
+}
+.resetScreen p {
+  margin: 0;
+  color: #00dffc;
+}
+.resetScreen button {
+  font-size: 50px;
+  padding: 25px;
+  background: #FFFFF2;
+  border: none;
+  border-radius: 5px;
+  color: #272932;
+  font-family: "Ubuntu", sans-serif;
+}
+.resetScreen button:hover {
+  background: #00dffc;
+  cursor: pointer;
+}
+
+.controller {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 25px;
+  font-family: "Merriweather", serif;
+  color: #272932;
+  padding-top: 10px;
+  padding-left: 5px;
+}
+.controller .strictSwitch {
+  margin-top: 7px;
+}
+.controller .switch:hover {
+  cursor: pointer;
+}
+.controller .startBtn {
+  width: 200px;
+  height: 50px;
+  border: none;
+  background: #272932;
+  color: #ffc952;
+  border-radius: 25px;
+  margin-top: 7px;
+  font-size: 25px;
+  font-family: "Ubuntu", sans-serif;
+}
+.controller .startBtn:hover {
+  cursor: pointer;
+  color: #00dffc;
+}
+.controller .startBtn:focus {
+  outline: none;
+}
+.controller .currentTurn {
+  font-size: 18px;
+}
+.controller .turnBox {
+  width: 200px;
+  height: 50px;
+  background: #272932;
+  border-radius: 25px;
+  color: #ff7473;
+  margin-top: 7px;
+}
+.controller .turnBox .turnText {
+  width: 150px;
+  height: 50px;
+  float: left;
+  position: relative;
+  bottom: 15px;
+  left: 38px;
+}
+.controller .turnBox .turnCounter {
+  float: right;
+  position: relative;
+  top: 8px;
+  right: 42px;
+  width: 45px;
+  text-align: center;
+  background: #3f4040;
+  border-radius: 5px;
+  color: #ff7473;
+}
+.controller .replayBox {
+  width: 200px;
+  height: 50px;
+  background: #272932;
+  border-radius: 25px;
+  color: #FFFFF2;
+  margin-top: 7px;
+}
+.controller .replayBox .replayText {
+  width: 150px;
+  height: 50px;
+  float: left;
+  position: relative;
+  bottom: 58px;
+  left: 50px;
+}
+.controller .replayBox:hover {
+  cursor: pointer;
+  color: #00dffc;
+}
+
+.container {
+  width: 550px;
+  height: 550px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: row;
+  font-size: 125px;
+  font-weight: bold;
+  color: #272932;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #272932;
+  background: #282828;
+  border-radius: 50%;
+}
+.container .gameBtn {
+  width: 250px;
+  height: 250px;
+  background: #ff7473;
+  border: 1px solid #272932;
+}
+.container .green {
+  border-top-left-radius: 150%;
+  background: #04724D;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+.container .green:hover {
+  background: #0A9664 !important;
+  cursor: pointer !important;
+}
+.container .red {
+  border-top-right-radius: 150%;
+  background: #C5283D;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-top: 15px;
+}
+.container .red:hover {
+  background: #FF283D !important;
+  cursor: pointer !important;
+}
+.container .yellow {
+  border-bottom-left-radius: 150%;
+  background: #FFC857;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 15px;
+}
+.container .yellow:hover {
+  background: #FFE14B !important;
+  cursor: pointer !important;
+}
+.container .blue {
+  border-bottom-right-radius: 150%;
+  background: #255F85;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.container .blue:hover {
+  background: #255FE9 !important;
+  cursor: pointer !important;
+}
+
+.credits {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+}
+.credits p {
+  font-size: 17px;
+  margin: 0;
+  color: #272932;
+}
+.credits a, .credits a:visited {
+  color: #272932;
+  text-decoration: none;
+}
+.credits a:hover {
+  color: #f94e3f;
+  text-decoration: underline;
+}

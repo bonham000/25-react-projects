@@ -1,0 +1,232 @@
+
+// Define Colors:
+$bright-blue: #00dffc;
+$heavy: #272932;
+$gold: #ffc952;
+$tan: #fff1b9;
+$white: #FFFFF2;
+$pink: #ff7473;
+$dark: #3f4040;
+$red-orange: #f94e3f;
+$greenBtn: #04724D;
+$redBtn: #C5283D;
+$yellowBtn: #FFC857;
+$blueBtn: #255F85;
+$greenHover: #0A9664;
+$redHover: #FF283D;
+$yellowHover: #FFE14B;
+$blueHover: #255FE9;
+
+// Define Fonts:
+$Ubuntu: 'Ubuntu', sans-serif;
+$Merriweather: 'Merriweather', serif;
+
+// Styling:
+body {
+  background: $tan;
+  font-size: 25px;
+  font-family: $Ubuntu;
+  min-width: 1000px;
+}
+#winner {
+	display: none;
+}
+.resetScreen {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(20,20,20,0.95);
+	font-size: 100px;
+	color: $white;
+	text-align: center;
+	padding-top: 150px;
+	z-index: 5;
+	p {
+		margin: 0;
+		color: $bright-blue;
+	}
+	button {
+		font-size: 50px;
+		padding: 25px;
+		background: $white;
+		border: none;
+		border-radius: 5px;
+		color: $heavy;
+		font-family: $Ubuntu;
+	}
+	button:hover {
+		background: $bright-blue;
+		cursor: pointer;
+	}
+}
+.controller {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	font-size: 25px;
+	font-family: $Merriweather;
+	color: $heavy;
+	padding-top: 10px;
+	padding-left: 5px;
+	.strictSwitch {
+		margin-top: 7px;
+	}
+	.switch:hover {
+		cursor: pointer;
+	}
+	.startBtn {
+		width: 200px;
+		height: 50px;
+		border: none;
+		background: $heavy;
+		color: $gold;
+		border-radius: 25px;
+		margin-top: 7px;
+		font-size: 25px;
+		font-family: $Ubuntu;
+	}
+	.startBtn:hover {
+		cursor: pointer;
+		color: $bright-blue;
+	}
+	.startBtn:focus {
+		outline: none;
+	}
+	.currentTurn {
+		font-size: 18px;
+	}
+	.turnBox {
+		width: 200px;
+		height: 50px;
+		background: #272932;
+		border-radius: 25px;
+		color: $pink;
+		margin-top: 7px;
+		.turnText {
+			width: 150px;
+			height: 50px;
+			float: left;
+			position: relative;
+			bottom: 15px;
+			left: 38px;
+		}
+		.turnCounter {
+			float: right;
+			position: relative;
+			top: 8px;
+			right: 42px;
+			width: 45px;
+			text-align: center;
+			background: $dark;
+			border-radius: 5px;
+			color: $pink;
+		}
+	}
+	.replayBox {
+		width: 200px;
+		height: 50px;
+		background: #272932;
+		border-radius: 25px;
+		color: $white;
+		margin-top: 7px;
+		.replayText {
+			width: 150px;
+			height: 50px;
+			float: left;
+			position: relative;
+			bottom: 58px;
+			left: 50px;
+		}
+	}
+	.replayBox:hover {
+		cursor: pointer;
+		color: $bright-blue;
+	}
+}
+.container {
+	width: 550px;
+	height: 550px;
+	margin: 40px auto;
+	display: flex;
+	flex-direction: row;
+	font-size: 125px;
+	font-weight: bold;
+	color: $heavy;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid $heavy;
+	background: rgb(40,40,40);
+	border-radius: 50%;
+	.gameBtn {
+		width: 250px;
+		height: 250px;
+		background: $pink;
+		border: 1px solid $heavy;
+	}
+	.green {
+		border-top-left-radius: 150%;
+		background: $greenBtn;
+		margin-right: 5px;
+		margin-bottom: 5px;
+		margin-top: 15px;
+	}
+	.green:hover {
+		background: $greenHover !important;
+		cursor: pointer !important;
+	}
+	.red {
+		border-top-right-radius: 150%;
+		background: $redBtn;
+		margin-bottom: 5px;
+		margin-left: 5px;
+		margin-top: 15px;
+	}
+	.red:hover {
+		background: $redHover !important;
+		cursor: pointer !important;
+	}
+	.yellow {
+		border-bottom-left-radius: 150%;
+		background: $yellowBtn;
+		margin-top: 5px;
+		margin-right: 5px;
+		margin-bottom: 15px;
+	}
+	.yellow:hover {
+		background: $yellowHover !important;
+		cursor: pointer !important;
+	}	
+	.blue {
+		border-bottom-right-radius: 150%;
+		background: $blueBtn;
+		margin-left: 5px;
+		margin-top: 5px;
+		margin-bottom: 15px;
+	}
+	.blue:hover {
+		background: $blueHover !important;
+		cursor: pointer !important;
+	}	
+}
+
+.credits {
+	position: absolute;
+	bottom: 8px;
+	left: 10px;
+	p {
+		font-size: 17px;
+		margin: 0;
+		color: $heavy;
+	}
+	a, a:visited {
+		color: $heavy;
+		text-decoration: none;
+	}
+	a:hover {
+		color: $red-orange;
+		text-decoration: underline;
+	}
+}
