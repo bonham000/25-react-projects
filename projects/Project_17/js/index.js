@@ -170,6 +170,8 @@ var App = function (_React$Component) {
 			this.computerPlay(3, status, computer);
 		} else if (status[1] === player && status[3] === player && status[7] === undefined && status[2] === computer) {
 			this.computerPlay(7, status, computer);
+		} else if (status[1] === computer && status[5] === player && status[9] === player && status[3] === undefined) {
+			this.computerPlay(3, status, computer);
 		} else if (status[2] === player && status[5] === player && status[8] === undefined) {
 			this.computerPlay(8, status, computer);
 		} else if (status[2] === player && status[8] === player && status[5] === undefined) {
