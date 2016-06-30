@@ -108,6 +108,10 @@ var App = function (_React$Component) {
 			this.computerPlay(5, status, computer, false);
 		} else if (status[4] === computer && status[5] === computer && status[6] === undefined) {
 			this.computerPlay(6, status, computer, false);
+		} else if (status[7] === computer && status[5] === computer && status[3] === undefined) {
+			this.computerPlay(3, status, computer, false);
+		} else if (status[3] === computer && status[5] === computer && status[7] === undefined) {
+			this.computerPlay(7, status, computer, false);
 		} else if (status[6] === computer && status[5] === computer && status[4] === undefined) {
 			this.computerPlay(4, status, computer, false);
 		} else if (status[2] === computer && status[5] === computer && status[8] === undefined) {
@@ -164,6 +168,8 @@ var App = function (_React$Component) {
 			this.computerPlay(6, status, computer);
 		} else if (status[1] === player && status[9] === player && status[5] === computer && status[2] === undefined) {
 			this.computerPlay(2, status, computer);
+		} else if (status[8] === player && status[6] === player && status[5] === computer && status[7] === undefined) {
+			this.computerPlay(7, status, computer);
 		} else if (status[7] === player && status[3] === player && status[5] === computer && status[6] === undefined) {
 			this.computerPlay(6, status, computer);
 		} else if (status[1] === player && status[7] === player && status[3] === undefined && status[4] === computer) {
