@@ -37,6 +37,7 @@ body {
 .credits {
 	margin-top: 2px;
 	margin-bottom: 0;
+	color: rgb(150,150,150);
 }
 .credits a, .credits a:visited {
 	color: rgb(150,150,150);
@@ -45,6 +46,9 @@ body {
 .credits a:hover {
 	text-decoration: underline;
 	color: rgb(114, 223, 250);
+}
+#shareBtn {
+	padding-top: 5px;
 }
 img {
 	width: 200px;
@@ -162,6 +166,8 @@ td {
 	.about {
 		width: auto;
 		margin: 5px;
+		padding-left: 15px;
+		padding-right: 15px;
 	}
 	.projectList {
 		position: static;
@@ -174,6 +180,9 @@ td {
 	table {
 		margin: 0 auto;
 	}
+	tr {
+		height: 28px;
+	}
 	td {
 		font-size: 20px;
 	}
@@ -185,10 +194,10 @@ td {
 	}
 	.contentTitle {
 		text-align: center;
-		font-size: 30px;
+		font-size: 35px;
 	}
 	.title h1 {
-		font-size: 20px;
+		font-size: 26px;
 		text-align: left;
 	}
 	.content {
@@ -212,9 +221,10 @@ td {
 	}
 	.subText {
 		font-family: 'Quicksand', sans-serif;
-		font-size: 18px;
+		font-size: 20px;
 		line-height: 120%;
 		margin-top: 5px;
+		margin-bottom: 35px;
 		color: rgb(200,200,200);
 	}
 	.creditsDiv {
