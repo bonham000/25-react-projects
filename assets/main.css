@@ -3,7 +3,7 @@ body {
   font-family: proxima-nova, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 	text-align: center;
 	color: rgb(114, 223, 250);
-	min-width: 1200px;
+	width: 1200px;
 	padding-bottom: 25px;
 }
 .header {
@@ -61,7 +61,7 @@ h1 {
 .projectList {
 	position: absolute;
 	left: 430px;
-	min-width: 700px;
+	width: 700px;
 	padding-top: 15px;
 	background: rgb(30,30,30);
 	z-index: 1;
@@ -131,12 +131,104 @@ td {
 	margin-bottom: 0px;
 	font-size: 40px;
 }
+.resources a, .resources a:visited {
+	color: rgb(215, 215, 215);
+}
+.resources a:hover {
+	text-decoration: underline;
+	color: rgb(114, 223, 250);
+}
 .subText {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 28px;
 	line-height: 120%;
 	margin-top: 5px;
 	color: rgb(200,200,200);
+}
+
+@media screen and (max-width: 800px) {
+	body {
+		width: auto;
+	}
+	.header {
+		position: static;
+		width: auto;
+		background: rgb(30,30,30);
+		border: none;
+	}
+	.header h1 {
+		margin-bottom: -15px;
+	}
+	.about {
+		width: auto;
+		margin: 5px;
+	}
+	.projectList {
+		position: static;
+		width: auto;
+		padding-top: 0px;
+		margin-top: -25px;
+		background: rgb(30,30,30);
+		z-index: 0;
+	}
+	table {
+		margin: 0 auto;
+	}
+	td {
+		font-size: 20px;
+	}
+	.leftCol {
+		display: none;
+	}
+	#line {
+		width: auto;
+	}
+	.contentTitle {
+		text-align: center;
+		font-size: 30px;
+	}
+	.title h1 {
+		font-size: 20px;
+		text-align: left;
+	}
+	.content {
+		width: auto;
+	}
+	.contentWrapper {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.resources {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.contentText {
+		font-family: 'Quicksand', sans-serif;
+		font-size: 20px;
+		text-align: left;
+		color: rgb(200,200,200);
+		line-height: 120%;
+		text-indent: 25px;
+	}
+	.subText {
+		font-family: 'Quicksand', sans-serif;
+		font-size: 18px;
+		line-height: 120%;
+		margin-top: 5px;
+		color: rgb(200,200,200);
+	}
+	.creditsDiv {
+		position: static;
+		text-align: center;
+	}
+	.credits a, .credits a:visited {
+		color: rgb(114, 223, 250);
+		text-decoration: none;
+	}
+	.credits a:hover {
+		text-decoration: underline;
+		color: rgb(114, 223, 250);
+	}
 }
 
 
