@@ -1,0 +1,76 @@
+body {
+  background: #2D1E2F;
+  background: linear-gradient(#2D1E2F, #13293D) fixed no-repeat;
+  color: #CC444B;
+  font-family: "Mukta Vaani", sans-serif;
+  font-size: 22px;
+  padding-left: 25px;
+}
+
+.wrapper {
+  width: 800px;
+  margin: 5px auto;
+}
+.wrapper p {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 45px;
+  text-align: center;
+}
+.wrapper .btnWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+.wrapper .btnWrapper .fa {
+  margin-left: 5px;
+}
+
+.btn {
+  display: inline-block;
+  background: #F4F1BB;
+  width: 150px;
+  text-align: center;
+  padding: 5px;
+  color: #1e1e1e;
+  font: "Mukta Vaani", sans-serif;
+  margin: 5px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background: #1ADFEE !important;
+}
+
+table {
+  border-collapse: collapse;
+}
+table img {
+  width: 45px;
+  height: 45px;
+  margin-right: 15px;
+  vertical-align: middle;
+  border-radius: 50%;
+  border: 1px solid rgba(26, 223, 238, 0.25);
+}
+table th {
+  text-align: left;
+  padding-left: 15px;
+  color: #FFD975;
+  font-size: 24px;
+  font-weight: normal;
+}
+table td {
+  width: 300px;
+  height: 50px;
+  border: 1px solid rgba(26, 223, 238, 0.25);
+  padding-left: 10px;
+  background: #1D1E2C;
+}
+table .dataCol {
+  width: 100px;
+}
+table tr:hover td {
+  background: #FFD975;
+  cursor: pointer;
+}
