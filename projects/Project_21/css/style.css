@@ -1,0 +1,69 @@
+body {
+  background-color: #1B2021;
+  background-image: url("http://i1361.photobucket.com/albums/r662/bonham000/Codepen%20Images/dotnoise-light-grey_zpskfycsh5a.png");
+  min-width: 1000px;
+}
+
+.title {
+  font-family: "Indie Flower", cursive;
+  text-align: center;
+  font-size: 65px;
+  color: #FF532F;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.subtitle {
+  font-family: "Indie Flower", cursive;
+  text-align: center;
+  font-size: 26px;
+  color: #FFE066;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+.subtitle a, .subtitle a:visited {
+  text-decoration: none;
+  color: #FFE066;
+}
+.subtitle a:hover {
+  text-decoration: underline;
+  color: #32C6FF;
+}
+
+a, a:visited {
+  color: #2892D7;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #f94e3f;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+}
+.flexContainer .textInput {
+  font-size: 15px;
+  font-family: "Muli", sans-serif;
+  color: #191919;
+  background: #FFF1D0;
+  width: 40vw;
+  max-width: 40vw;
+  min-height: 460px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-rigth: 10px;
+  padding: 15px;
+  border: 1px solid #141414;
+}
+.flexContainer .textOutput {
+  background: #272625;
+  color: #dae9f4;
+  font-size: 15px;
+  font-family: "Muli", sans-serif;
+  width: 60vw;
+  margin: 5px;
+  padding: 0 15px 0 15px;
+  border: 1px solid #141414;
+}

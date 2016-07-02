@@ -1,0 +1,55 @@
+
+var initialText = "This is an h1 header\n============\n\nNow an h2\n---------------\n\nParagraphs are separated by a blank line.\n\n*Italic*, **bold**, and `monospace`, ~~strikethrough~~ are simple\n\n~~~\nvar hello = function() {\n\tconsole.log(\"Hello from a function!\");\n}\n~~~\nHere is a list of items:\n\n* Free Code Camp\n* React\n* Sass\n\n*[Here is a link to Free Code Camp](https://freecodecamp.com)*\n"
+
+class Root extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      input: initialText
+    }
+    this.handleInput = this.handleInput.bind(this);
+  }
+  handleInput(event) {
+    this.setState({
+      input: event.target.value
+    });
+    this.renderOutput();
+  }
+  renderOutput() {
+    document.getElementById("outputArea").innerHTML = marked(this.state.input);    
+  }
+  componentDidMount() {    
+    this.renderOutput();
+  }
+  render() {
+    return (
+      <div>
+        <h1 className = "title">React Markdown Previewer</h1>
+        <p className = "subtitle">A Free Code Camp project built with <a href = "">React</a> and <a href = "https://cdnjs.com/libraries/marked">Marked</a></p>
+        <div className = "flexContainer">
+          <TextArea handleInput = {this.handleInput} input = {this.state.input} />
+          <div
+            className = "textOutput"
+            id = "outputArea">
+          </div>
+        </div>
+      </div>
+    );
+  }
+};
+
+class TextArea extends React.Component {
+  render() {
+    return (
+      <div>
+        <textarea
+          className = "textInput"
+          value = {this.props.input}
+          onChange = {this.props.handleInput}>
+        </textarea>
+      </div>
+    );
+  }
+};
+
+ReactDOM.render(<Root />, document.getElementById('main'));

@@ -1,0 +1,76 @@
+$dark: #191919;
+$back: #1B2021;
+$title: #FF532F;
+$subtitle: #FFE066;
+$light: #dae9f4;
+$hover: #f94e3f;
+$link: #2892D7;
+$blue: #32C6FF;
+$border: #141414;
+$font: 'Indie Flower', cursive;
+$muli: 'Muli', sans-serif;
+
+body {
+background-color: $back;
+background-image: url("http://i1361.photobucket.com/albums/r662/bonham000/Codepen%20Images/dotnoise-light-grey_zpskfycsh5a.png");
+  min-width: 1000px;
+}
+.title {
+  font-family: $font;
+  text-align: center;
+  font-size: 65px;
+  color: $title;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+.subtitle {
+  font-family: $font;
+  text-align: center;
+  font-size: 26px;
+  color: $subtitle;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  a, a:visited {
+    text-decoration: none;
+    color: $subtitle;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: $blue;
+  }
+}
+a, a:visited {
+  color: $link;
+}
+a:hover {
+  text-decoration: underline;
+  color: $hover;
+}
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  .textInput {
+    font-size: 15px;
+    font-family: $muli;
+    color: $dark;
+    background: #FFF1D0;
+    width: 40vw;
+    max-width: 40vw;
+    min-height: 460px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-rigth: 10px;
+    padding: 15px;
+    border: 1px solid $border;
+  }
+  .textOutput {
+    background: #272625;
+    color: $light;
+    font-size: 15px;
+    font-family: $muli;
+    width: 60vw;
+    margin: 5px;
+    padding: 0 15px 0 15px;
+    border: 1px solid $border;
+  }
+}
