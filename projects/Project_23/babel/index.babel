@@ -1,0 +1,545 @@
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
+// Set initial recipes for first page load:
+var initialRecipes = [
+	['bonham000_recipes_Beef Wellington', '- 400g flat cap mushrooms, roughly chopped\n- sea salt and freshly ground black pepper\n- olive oil, for cooking\n- 750g piece of prime beef fillet\n- 1-2tbsp English mustard\n- 6-8 slices of Parma ham\n- 500g ready-made puff pastry\n- flour, to dust\n- 2 egg yolks, beaten'],
+	['bonham000_recipes_Kimchi Jjigae', '- 1 pound kimchi, cut into bite size pieces\n- ¼ cup kimchi brine\n- ½ pound pork shoulder (or pork belly)\n- ½ package of tofu (optional), sliced into ½ inch thick bite size pieces\n- 1 teaspoon salt\n- 2 teaspoons sugar\n- 2 teaspoons gochugaru (Korean hot pepper flakes)\n- 1 tablespoon gochujang (hot pepper paste)\n- 1 teaspoon sesame oil\n- 2 cups of anchovy stock (or chicken or beef broth)\n'],
+	['bonham000_recipes_Cajun Pasta', '- 1 pound fettuccine\n- About 3 teaspoons Cajun spice mix\n- 3 whole boneless, skinless chicken breasts, cut into cubes\n- 2 tablespoons butter\n- 2 tablespoons olive oil\n- 3 cloves garlic, minced\n- 1 whole green bell pepper, seeded and sliced\n- 1 whole red bell pepper, seeded and sliced\n- 1/2 large red onion, sliced\n- Salt\n- 4 whole Roma tomatoes, diced\n- 2 cups low-sodium chicken broth\n- 1/2 cups white wine\n- 1 cup heavy cream\n- Cayenne pepper, for sprinkling\n- Freshly ground black pepper\n- Chopped fresh parsley, for garnish\n'],
+];
+
+// Root Component:
+class App extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			empty: false,
+			showAbout: true,
+			showForm: false,
+			showOne: false,
+			showAll: false,
+			showEdit: false,
+			showOneKey: '',
+			recipeBook: [],
+			recipes: [],
+			recipeTitle: '',
+			recipeText: '',
+			editKey: '',
+			editValue: '',
+			editTitle: ''
+		};		
+		this.handleInputTitle = this.handleInputTitle.bind(this);
+		this.handleInputText = this.handleInputText.bind(this);
+		this.submitRecipe = this.submitRecipe.bind(this);
+		this.showAllRecipes = this.showAllRecipes.bind(this);
+		this.showRecipe = this.showRecipe.bind(this);
+		this.removeAll = this.removeAll.bind(this);
+		this.removeOne = this.removeOne.bind(this);
+		this.setEdit = this.setEdit.bind(this);
+		this.handleEdit = this.handleEdit.bind(this);
+		this.submitEdit = this.submitEdit.bind(this);
+		this.showForm = this.showForm.bind(this);
+		this.showAll = this.showAll.bind(this);
+		this.cancelSubmit = this.cancelSubmit.bind(this);
+		this.cancelEdit = this.cancelEdit.bind(this);
+		this.handleEditTitle = this.handleEditTitle.bind(this);
+	}
+	showAllRecipes() {
+		var keys = [];
+		for (var i = 0; i < localStorage.length; i++) {
+				keys[i] = localStorage.key(i);
+		}
+		for (var j = 0; j < keys.length; j++) {
+			if (keys[j] === 'firstLoad12345') {
+				keys.splice(j, 1);
+			}
+		}
+		this.setState({
+			recipeBook: keys
+		});
+    
+		var prefixedRecipes = [];
+    var recipes = [];
+    
+		for (var k = 0; k < keys.length; k++) {
+			prefixedRecipes[k] = [keys[k], localStorage.getItem(keys[k])];		
+		}
+    for (var z = 0; z < prefixedRecipes.length; z++) {
+      recipes[z] = [prefixedRecipes[z][0].substr(18, prefixedRecipes[z][0].length), prefixedRecipes[z][1]];
+    }
+		this.setState({
+			recipes: recipes
+		});
+	}
+	showRecipe(key) {
+		this.setState({
+			showAbout: false,
+			showOne: true,
+			showAll: false,
+			showForm: false,
+			showOneKey: key
+		});
+	}
+	showAll() {
+		if (this.state.recipes.length === 0) {
+			this.setState({
+				empty: true,
+				showAbout: true,
+				showForm: false,
+				showOne: false,
+				showAll: false,
+				showEdit: false
+			});
+		}
+		else if (this.state.showAll === false) {
+			this.setState({
+				showAbout: false,
+				showForm: false,
+				showOne: false,
+				recipeTitle: '',
+				recipeText: '',
+				editValue: '',
+				showAll: true
+			});
+		}
+		else {
+			this.setState({
+				showAbout: true,
+				showAll: false
+			});
+		}
+	}
+	submitRecipe(event) {
+		event.preventDefault();
+    var currentTitle = this.state.recipeTitle.slice();
+		// Prevent user from creating recipes with the same name:
+		if (localStorage.getItem(this.state.recipeTitle)) {
+			alert("Sorry, you've already created this recipe!");
+		}
+		else {
+			if (this.state.recipeTitle !== '' && this.state.recipeText !== '') {
+				// Verify local storage is available
+        
+				if (typeof(Storage) !== undefined) {
+					localStorage.setItem("bonham000_recipes_" + this.state.recipeTitle, this.state.recipeText);
+				} else {
+					alert("Local storage is unavailable");
+				}
+				this.setState({
+					showAbout: true,
+					showForm: false,
+					showOne: false,
+					recipeTitle: '',
+					recipeText: ''
+				});
+				this.showAllRecipes();
+			}
+		}
+	}
+	cancelSubmit() {
+		this.setState({
+			showAbout: true,
+			showForm: false,
+			recipeTitle: '',
+			recipeText: ''
+		});
+	}
+	handleInputTitle(event) {
+		this.setState({
+			recipeTitle: event.target.value
+		})
+	}
+	handleInputText(event) {
+		this.setState({
+			recipeText: event.target.value
+		})
+	}
+	showForm() {
+		this.setState({
+			showAbout: false,
+			showForm: true,
+			showOne: false,
+			showAll: false,
+			showEdit: false,
+		});
+	}
+	setEdit(key) {
+		this.setState({
+			showEdit: true,
+			editKey: key,
+			editTitle: key,
+			editValue: localStorage.getItem("bonham000_recipes_" + key)
+		});
+	}
+	handleEdit(event) {
+		this.setState({
+			editValue: event.target.value
+		});
+	}
+	handleEditTitle(event) {
+		this.setState({
+			editTitle: event.target.value
+		});
+	}
+	submitEdit() {
+		if (this.state.editValue !== '') {
+			var oldKey = this.state.editKey;
+			localStorage.removeItem("bonham000_recipes_" + oldKey);
+			
+			var newKey = this.state.editTitle;
+			localStorage.setItem("bonham000_recipes_" + newKey, this.state.editValue);
+
+			this.setState({
+				showEdit: false,
+        showOne: false,
+        showAll: true,
+				editKey: '',
+				editValue: '',
+				editTitle: ''
+			});
+			this.showAllRecipes();
+		}
+	}
+	cancelEdit() {
+		this.setState({
+			showEdit: false,
+			editKey: '',
+			editValue: ''
+		});
+		this.showAllRecipes();
+	}
+	removeOne(key) {
+		localStorage.removeItem("bonham000_recipes_" + key);
+		this.setState({
+			showOne: false
+		});
+		this.showAllRecipes();
+	}
+	removeAll(event) {
+		event.preventDefault();
+		var currentRecipes = this.state.recipeBook.slice();
+		
+		for (var k = 0; k < currentRecipes.length; k++) {
+			localStorage.removeItem(currentRecipes[k]);
+		}
+
+		this.setState({
+			empty: true,
+			showAbout: true,
+			showOne: false,
+			showAll: false,
+			showEdit: false,
+			recipeBook: [],
+			recipes: []
+		});
+	}
+	componentWillMount() {
+		// Perform the first time a user loads the page in order to load the initial recipes array:
+		if (!localStorage.getItem('firstLoad12345')) {
+			localStorage.setItem("firstLoad12345", "true");
+
+			for (var a = 0; a < initialRecipes.length; a++) {
+				localStorage.setItem(initialRecipes[a][0], initialRecipes[a][1]);
+			}
+		}
+		this.showAllRecipes();
+	}
+	render() {
+		return (
+			<div id = "content">
+				<RecipeList
+					recipes = {this.state.recipes}
+					showRecipe = {this.showRecipe}
+					showForm = {this.showForm}
+					removeAll = {this.removeAll}
+					empty = {this.state.empty}
+					showAll = {this.state.showAll}
+					handleShowAll = {this.showAll} />
+				<div className = "contentWrapper">
+					<About
+						showAbout = {this.state.showAbout} />
+					<SubmitRecipe
+						showForm = {this.state.showForm}
+						submitRecipe = {this.submitRecipe}
+						cancelSubmit = {this.cancelSubmit}
+						recipeTitle = {this.state.recipeTitle}
+						recipeText = {this.state.recipeText}
+						handleInputTitle = {this.handleInputTitle}
+						handleInputText = {this.handleInputText} />
+					<ShowOne
+						showOne = {this.state.showOne}
+						showOneKey = {this.state.showOneKey}
+						editKey = {this.state.editKey}
+						setEdit = {this.setEdit}
+						showEdit = {this.state.showEdit}
+						editValue = {this.state.editValue}
+						editTitle = {this.state.editTitle}
+						handleEdit = {this.handleEdit}
+						handleEditTitle = {this.handleEditTitle}
+						submitEdit = {this.submitEdit}
+						cancelEdit = {this.cancelEdit}
+						removeOne = {this.removeOne} />
+					<ShowAll
+						recipes = {this.state.recipes}
+						setEdit ={this.setEdit}
+						showAll = {this.state.showAll}
+						removeOne = {this.removeOne}
+						showEdit = {this.state.showEdit}
+						editKey = {this.state.editKey}
+						editValue = {this.state.editValue}
+						editTitle = {this.state.editTitle}
+						handleEdit = {this.handleEdit}
+						handleEditTitle = {this.handleEditTitle}
+						submitEdit = {this.submitEdit}
+						cancelEdit = {this.cancelEdit} />
+					</div>
+			</div>
+		);
+	}
+};
+// Component shows details about the project to the user:
+class About extends React.Component {
+	render() {
+		var component;
+		if (this.props.showAbout === true) {
+			component = (
+				<div className = "aboutWrapper">
+					<div className = "about">
+						<h1>This is a Recipe App</h1>
+						<h2>You can record your recipes here</h2>
+						<p>All your recipes are stored in your browser's local storage and any changes you make will remain saved as long as you continue to access this page from the same browser.</p>
+						<p>Built by <a target = "_blank" href = "http://sean-smith.me">Sean Smith</a></p>
+					</div>
+				</div>
+			);
+		};
+		return (
+			<ReactCSSTransitionGroup
+				transitionName = "transitionDiv"
+				transitionEnterTimeout = {1500}
+				transitionLeaveTimeout = {50}>
+				{component}
+			</ReactCSSTransitionGroup>
+		);
+	}
+};
+// This is the control side bar that allows the user to navigate the app:
+class RecipeList extends React.Component {
+	render() {
+		var recipeListTitle = "Recipe List:";
+		if (this.props.empty === true) {
+			recipeListTitle = "The List is Empty";
+		}
+		var recipesList = this.props.recipes.map( (recipe) => {
+			return (
+				<div className = "recipeListItem" key = {recipe} onClick = {this.props.showRecipe.bind(this, recipe[0])}>{recipe[0]}</div>
+			);
+		});
+		var showHideStyle = "Show All Recipes";
+		if (this.props.showAll === true) {
+			showHideStyle = "Hide All Recipes";
+		}
+		return (
+			<div className = "listWrapper">
+				<div className = "titleBox">
+					<i className="fa fa-cutlery" aria-hidden="true"></i>
+					<h1><a target = "_blank" href = "https://www.freecodecamp.com/challenges/build-a-recipe-box">Free Code Camp</a><br />Recipe Box</h1>
+				</div>
+					<div className = "listBtn" onClick = {this.props.showForm}>Add a New Recipe</div>
+					<div className = "listBtn" onClick = {this.props.handleShowAll}>{showHideStyle}</div>
+					<div className = "listBtn removeBtn" onClick = {this.props.removeAll}>Remove All Recipes</div>
+				<h1 className = "listTitle">{recipeListTitle}</h1>
+					{recipesList}
+			</div>
+		);
+	}
+};
+// Submit form for new recipes:
+class SubmitRecipe extends React.Component {
+	render() {
+		var component;
+		if (this.props.showForm === true) {
+			component = (
+				<div className = "submitForm">
+					<form onSubmit = {this.props.submitRecipe}>
+						<input
+							autoFocus
+							type = "text"
+							placeholder = "Recipe"
+							value = {this.props.recipeTitle}
+							onChange = {this.props.handleInputTitle} /><br />
+						<textarea
+							type = "text"
+							placeholder = "Ingredients"
+							value = {this.props.recipeText}
+							onChange = {this.props.handleInputText} >
+						</textarea><br />
+						<button
+							className = "submitBtn"
+							onClick = {this.props.submitRecipe}>Submit Recipe</button><br />
+						<button
+							className = "cancelBtn"
+							onClick = {this.props.cancelSubmit}>Cancel</button>
+					</form>
+				</div>
+			);
+		}
+		return (
+			<ReactCSSTransitionGroup
+				transitionName = "transitionDiv"
+				transitionEnterTimeout={1500}
+				transitionLeaveTimeout={50}>
+				{component}
+			</ReactCSSTransitionGroup>
+		);
+	}
+};
+// Panel to show when one recipe is clicked:
+class ShowOne extends React.Component {
+	render() {
+		var component;
+		var editBox;
+			if (this.props.editKey === this.props.showOneKey) {
+				editBox = (
+					<EditRecipe
+					showEdit = {this.props.showEdit}
+					editKey = {this.props.editKey}
+					editValue = {this.props.editValue}
+					editTitle = {this.props.editTitle}
+					handleEdit = {this.props.handleEdit}
+					handleEditTitle = {this.props.handleEditTitle}
+					submitEdit = {this.props.submitEdit}
+					cancelEdit = {this.props.cancelEdit} />
+				);
+			}
+		if (this.props.showOne === true) {
+			component = (
+				<div className = "recipeView">
+					<h1>{this.props.showOneKey}</h1>
+					<div className = "editBtnWrapper">
+						<button
+							className = "removeBtn"
+							onClick = {this.props.removeOne.bind(this, this.props.showOneKey)}>Remove This Recipe
+						</button>
+						<button
+							className = "editBtn"
+							onClick = {this.props.setEdit.bind(this, this.props.showOneKey)}>Edit This Recipe
+						</button>
+					</div>
+					<p><strong>Ingredients:</strong></p>
+					<pre className = "ingredients">{localStorage.getItem("bonham000_recipes_" + this.props.showOneKey)}</pre>
+					{editBox}
+				</div>
+			);
+		}
+		return (
+			<ReactCSSTransitionGroup
+			transitionName = "transitionDiv"
+			transitionEnterTimeout={1500}
+			transitionLeaveTimeout={50}>
+				{component}
+			</ReactCSSTransitionGroup>
+		);
+	}
+};
+// Show all recipes view:
+class ShowAll extends React.Component {
+	render() {
+		var recipes = this.props.recipes.map( (recipe) => {
+			var editBox;
+			if (this.props.editKey === recipe[0]) {
+				editBox = (
+					<EditRecipe
+					showEdit = {this.props.showEdit}
+					editKey = {this.props.editKey}
+					editValue = {this.props.editValue}
+					editTitle = {this.props.editTitle}
+					handleEdit = {this.props.handleEdit}
+					handleEditTitle = {this.props.handleEditTitle}
+					submitEdit = {this.props.submitEdit}
+					cancelEdit = {this.props.cancelEdit} />
+				);
+			}
+			return (
+				<div className = "recipeView" key = {recipe[0] + recipe[1].substr(0, 5)}>
+					<h1>{recipe[0]}</h1>
+					<div className = "editBtnWrapper">
+						<button
+							className = "removeBtn"
+							onClick = {this.props.removeOne.bind(this, recipe[0])}>Remove This Recipe
+						</button>
+						<button
+							className = "editBtn"
+							onClick = {this.props.setEdit.bind(this, recipe[0])}>Edit This Recipe
+						</button>
+					</div>
+					<p><strong>Ingredients:</strong></p>
+					<pre className = "ingredients">{localStorage.getItem("bonham000_recipes_" + recipe[0])}</pre>
+						{editBox}
+				</div>
+			);
+		});
+		var component;
+		if (this.props.showAll === true) {
+			component = (
+				<div className = "showAllWrapper">
+					{recipes}
+				</div>
+			);
+		}
+		return (
+			<ReactCSSTransitionGroup
+			transitionName = "transitionDiv"
+			transitionEnterTimeout={1500}
+			transitionLeaveTimeout={50}>
+				{component}
+			</ReactCSSTransitionGroup>
+		);
+	}
+};
+// Edit Recipe Component, will load in ShowOne or ShowAll view:
+class EditRecipe extends React.Component {
+	render() {
+		// Conditionally calculate height of textarea based on inner content:
+		var num = this.props.editValue.split(/\r\n|\r|\n/).length;
+		var textAreaStyle = {
+			height: 25 * num + 15
+		}
+		var component;
+		if (this.props.showEdit === true) {
+			component = (
+					<div className = "editBox">
+						<p>Edit Title:</p>
+						<input
+							type = "text"
+							value = {this.props.editTitle}
+							onChange = {this.props.handleEditTitle} />
+						<p>Edit Ingredients:</p>
+						<textarea
+							style = {textAreaStyle}
+							id = "edit"
+							value = {this.props.editValue}
+							onChange = {this.props.handleEdit}>
+						</textarea><br />
+						<button
+							className = "submitBtn"
+							onClick = {this.props.submitEdit}>Submit Edit</button>
+						<button
+							className = "cancelBtn"
+							onClick = {this.props.cancelEdit}>Cancel Edit</button>
+					</div>
+			);
+		}
+		return (
+			<ReactCSSTransitionGroup
+				transitionName = "editTransitionDiv"
+				transitionAppear = {true}
+				transitionAppearTimeout={750}
+				transitionEnterTimeout = {750}
+				transitionLeaveTimeout={0}>
+				{component}
+			</ReactCSSTransitionGroup>
+		);
+	}
+};
+
+ReactDOM.render(<App />, document.getElementById('main'));

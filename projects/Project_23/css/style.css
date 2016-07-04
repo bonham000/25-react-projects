@@ -1,0 +1,416 @@
+body {
+  background: #379BFF;
+  background: linear-gradient(#379BFF, #3773FF) fixed no-repeat;
+  color: #272932;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  padding-bottom: 35px;
+}
+
+#content {
+  width: 70vw;
+  margin-left: 25vw;
+}
+#content button, #content input, #content textarea {
+  font-family: "Montserrat", sans-serif;
+}
+
+.aboutWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  color: #272932;
+}
+.aboutWrapper .about {
+  width: 750px;
+}
+.aboutWrapper .about h1 {
+  font-size: 55px;
+  margin: 5px;
+}
+.aboutWrapper .about h2 {
+  font-size: 40px;
+  margin: 15px;
+}
+.aboutWrapper .about p {
+  font-size: 26px;
+  margin-top: 15px;
+  font-family: "Raleway", sans-serif;
+}
+.aboutWrapper .about p a, .aboutWrapper .about p a:visited {
+  text-decoration: none;
+  color: #272932;
+}
+.aboutWrapper .about p a:hover {
+  text-decoration: underline;
+  color: #f94e3f;
+}
+
+.listWrapper {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 20vw;
+  height: 100vh;
+  padding: 5px 10px 5px 10px;
+  background: #9388F2;
+  background: linear-gradient(#9388F2, #6464D7) fixed no-repeat;
+  border-right: 1px solid rgba(20, 20, 20, 0.5);
+}
+.listWrapper .titleBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.listWrapper .titleBox h1 {
+  display: inline;
+  font-size: 1.6vw;
+  color: #272932;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.listWrapper .titleBox a, .listWrapper .titleBox a:visited {
+  text-decoration: none;
+  color: #272932;
+}
+.listWrapper .titleBox a:hover {
+  text-decoration: underline;
+  color: #10EB7D;
+}
+.listWrapper .titleBox .fa {
+  display: inline;
+  font-size: 70px;
+  margin-right: 15px;
+}
+.listWrapper .listTitle {
+  padding: 10px;
+  font-size: 25px;
+  margin: 30px 5px -10px 5px;
+}
+.listWrapper .recipeListItem {
+  padding: 10px;
+  font-size: 1.6vw;
+  margin: 5px;
+  background: #FFE37D;
+  border: 1px solid rgba(20, 20, 20, 0.5);
+}
+.listWrapper .listBtn {
+  padding: 10px;
+  font-size: 1.6vw;
+  margin: 5px;
+  background: #10D091;
+  border: 1px solid rgba(20, 20, 20, 0.5);
+}
+.listWrapper .removeBtn {
+  background: #FF6464;
+}
+.listWrapper .recipeListItem:hover, .listWrapper .listBtn:hover {
+  cursor: pointer;
+  background: #10EB7D;
+}
+.listWrapper .recipeListItem:hover {
+  background: #FFD150;
+}
+.listWrapper .removeBtn:hover {
+  background: #FA3D57;
+}
+
+.submitForm {
+  margin-top: 45px;
+}
+.submitForm input {
+  width: 500px;
+  border: 1px solid black;
+  padding: 15px;
+  font-size: 20px;
+}
+.submitForm textarea {
+  width: 500px;
+  min-height: 150px;
+  background: white;
+  padding: 15px;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.submitForm button {
+  width: 350px;
+  font-size: 30px;
+  margin-top: 15px;
+  padding: 10px 0 10px 0;
+  border: 1px solid rgba(20, 20, 20, 0.5);
+}
+.submitForm button:hover {
+  cursor: pointer;
+}
+.submitForm .submitBtn {
+  background: #10D091;
+}
+.submitForm .submitBtn:hover {
+  background: #10EB7D;
+}
+.submitForm .cancelBtn {
+  background: #FF6464;
+}
+.submitForm .cancelBtn:hover {
+  background: #FA3D57;
+}
+
+.recipeView {
+  position: relative;
+  margin-top: 25px;
+  background: #FFE37D;
+  padding: 5px 5px 15px 15px;
+  border-radius: 5px;
+  text-align: left;
+  border: 1px solid rgba(20, 20, 20, 0.5);
+}
+.recipeView h1 {
+  margin: 10px auto 15px auto;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.5);
+  font-size: 28px;
+}
+.recipeView p {
+  font-size: 24px;
+}
+.recipeView .ingredients {
+  font-size: 18px;
+  font-family: "Raleway", sans-serif;
+  margin-top: -10px;
+  margin-left: 15px;
+  line-height: 25px;
+}
+.recipeView .editBtn:hover, .recipeView .removeBtn:hover {
+  cursor: pointer;
+}
+.recipeView .editBtn {
+  position: absolute;
+  right: 165px;
+  top: -3px;
+  width: 150px;
+  font-size: 14px;
+  margin-top: 15px;
+  padding: 5px 0 5px 0;
+  border: 1px solid rgba(20, 20, 20, 0.5);
+  background: #9388F2;
+}
+.recipeView .editBtn:hover {
+  background: #6464D7;
+}
+.recipeView .editBtn:focus {
+  outline: none;
+}
+.recipeView .removeBtn {
+  position: absolute;
+  right: 10px;
+  top: -3px;
+  width: 150px;
+  font-size: 14px;
+  margin-top: 15px;
+  padding: 5px 0 5px 0;
+  border: 1px solid rgba(20, 20, 20, 0.5);
+  background: #FF6464;
+}
+.recipeView .removeBtn:hover {
+  background: #FA3D57;
+}
+
+.editBox {
+  margin: 25px 5px auto -5px;
+  border: 1px solid #272932;
+  border-radius: 3px;
+  padding: 5px;
+  background: #3f4040;
+  color: #FFFFF2;
+}
+.editBox p {
+  margin-left: 15px;
+}
+.editBox input {
+  width: 500px;
+  border: 1px solid black;
+  padding: 15px;
+  font-size: 20px;
+  margin-left: 15px;
+}
+.editBox textarea {
+  width: 60vw;
+  max-width: 60vw;
+  margin-left: 15px;
+  background: #FFFFF2;
+  font-size: 20px;
+  padding: 10px;
+}
+.editBox button {
+  width: 200px;
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 0 10px 0;
+  border: 1px solid rgba(20, 20, 20, 0.5);
+}
+.editBox .submitBtn {
+  background: #9388F2;
+  margin-left: 15px;
+}
+.editBox .submitBtn:hover {
+  background: #6464D7;
+  cursor: pointer;
+}
+.editBox .cancelBtn {
+  background: #FF6464;
+  margin-left: 15px;
+}
+.editBox .cancelBtn:hover {
+  background: #FA3D57;
+  cursor: pointer;
+}
+
+.transitionDiv-enter {
+  opacity: 0.01;
+}
+
+.transitionDiv-enter.transitionDiv-enter-active {
+  opacity: 1;
+  transition: opacity 1500ms ease-in;
+}
+
+.transitionDiv-leave {
+  opacity: 1;
+}
+
+.transitionDiv-leave.transitionDiv-leave-active {
+  opacity: 0.01;
+  transition: opacity 50ms ease-in;
+}
+
+.editTransitionDiv-appear {
+  opacity: 0.01;
+}
+
+.editTransitionDiv-appear.editTransitionDiv-appear-active {
+  opacity: 1;
+  transition: opacity 750ms ease-in;
+}
+
+@media screen and (max-width: 1000px) {
+  .recipeView {
+    margin: 15px;
+  }
+  .recipeView .editBtnWrapper {
+    display: relative;
+  }
+  .recipeView .editBtn, .recipeView .removeBtn {
+    position: static;
+    margin: 5px;
+  }
+  .recipeView pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+  }
+
+  .editBox input {
+    width: auto;
+  }
+  .editBox textarea {
+    width: 50vw;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 750px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  #content {
+    width: 100vw;
+    margin: 0;
+  }
+
+  .aboutWrapper {
+    height: auto;
+    display: static;
+    width: 100vw;
+    margin: 0;
+  }
+  .aboutWrapper .about {
+    padding: 15px;
+    margin: 0;
+  }
+  .aboutWrapper .about h1 {
+    font-size: 30px;
+  }
+  .aboutWrapper .about h2 {
+    font-size: 25px;
+  }
+  .aboutWrapper .about p {
+    font-size: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .listWrapper {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: auto;
+    padding: 0;
+    padding-bottom: 15px;
+    background: #9388F2;
+    border: 1px solid rgba(20, 20, 20, 0.5);
+  }
+  .listWrapper .titleBox h1 {
+    font-size: 24px;
+  }
+  .listWrapper .recipeListItem, .listWrapper .listBtn, .listWrapper .removeBtn {
+    width: 80vw;
+    font-size: 18px;
+    margin: 5px auto;
+  }
+  .listWrapper .contentWrapper {
+    display: static;
+  }
+
+  .recipeView {
+    margin: 15px;
+  }
+  .recipeView .editBtnWrapper {
+    display: relative;
+  }
+  .recipeView .editBtn, .recipeView .removeBtn {
+    margin: 5px;
+    position: static;
+  }
+  .recipeView pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+  }
+
+  .submitForm {
+    padding-bottom: 50px;
+  }
+  .submitForm input {
+    width: 75vw;
+  }
+  .submitForm textarea {
+    width: 75vw;
+  }
+  .submitForm .submitBtn, .submitForm .cancelBtn {
+    width: 55vw;
+    font-size: 18px;
+  }
+
+  .editBox input {
+    width: auto;
+  }
+  .editBox textarea {
+    width: 90vw;
+    font-size: 16px;
+  }
+}
