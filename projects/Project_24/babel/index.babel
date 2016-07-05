@@ -1,0 +1,309 @@
+class App extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			counter: 0,
+			pause: false,
+			running: false,
+			randomControlValue: 3,
+			generationTimer: 5,
+			array: []
+		};
+		this.renderRandomState = this.renderRandomState.bind(this);
+		this.handleCoordinates = this.handleCoordinates.bind(this);
+		this.startGame = this.startGame.bind(this);
+		this.pauseGame = this.pauseGame.bind(this)
+		this.clearAll = this.clearAll.bind(this);
+		this.setSlow = this.setSlow.bind(this);
+		this.setMedium = this.setMedium.bind(this);
+		this.setFast = this.setFast.bind(this);
+		this.setFew = this.setFew.bind(this);
+		this.setMany = this.setMany.bind(this);
+		this.setMost = this.setMost.bind(this);
+	}
+	startGame() {
+
+		var speed = this.state.generationTimer;
+
+		this.setState({
+			running: true
+		});
+
+		if (this.state.pause === true) {
+			this.setState({
+				pause: false
+			});
+		}
+
+		function pauseGame() {
+			clearInterval(timer);
+		};
+
+		var timer = setInterval(function() {
+			if (this.state.pause === true) {
+				pauseGame();
+			}
+			else {
+				var a = this.state.array.slice();
+				generate(a);
+			}
+		}.bind(this), speed);
+
+		function generate(a) {
+
+			var nextGen = [];
+			var verdict;
+
+			for (var x = 1; x < a.length; x++) {
+
+				// Iterate through current array and generate a verdict count based on the status of neighbor cells:
+				if ( x === 1 ) { verdict = a[x + 1] + a[x + 49] + a[x + 50] + a[x + 51]; }
+				else if ( x >= 2 && x <= 49) { verdict = a[x - 1] + a[x + 1] + a[x + 49] + a[x + 50] + a[x + 51]; }
+				else if ( x === 50 ) { verdict = a[x - 1] + a[x + 49] + a[x + 50]; }
+				else if ( x === 51 ) { verdict = a[x + 1] + a[x - 50] + a[x - 49] + a[x + 50] + a[x + 51]; }
+				else if ( x > 51 && x <= 1449) { verdict = a[x - 1] + a[x + 1] + a[x - 49] + a[x - 50] + a[x - 51] + a[x + 49] + a[x + 50] + a[x + 51]; }
+				else if ( x === 1450) { verdict = a[x - 1] + a[x + 49] + a[x + 50]; }
+				else if ( x === 1451 ) { verdict = a[x + 1] + a[x - 50] + a[x - 51]; }
+				else if ( x >= 1452 && x <= 1499) { verdict = a[x - 1] + a[x + 1] + a[x - 49] + a[x - 50] + a[x - 51]; }
+				else if ( x === 1500 ) { verdict = a[x - 1] + a[x - 49] + a[x - 50]; }
+
+				// Depending on the current state of each cell and its verdict, render it's fate according to the game rules:
+				if ( a[x] === 0 ) {
+					if ( verdict === 3 ) { nextGen[x] = 1; }
+					else { nextGen[x] = 0; }
+				}
+				else if ( a[x] === 1 ) {
+					if ( verdict === 0 || verdict === 1 ) { nextGen[x] = 0; }
+					else if ( verdict >= 4 ) { nextGen[x] = 0; }
+					else if ( verdict === 2 || verdict === 3 ) { nextGen[x] = 1; }
+				}
+
+			}
+
+			// Submit the next generation array for rendering:
+			renderNextGeneration(nextGen);
+
+		};
+
+		var renderNextGeneration = function(array) {
+			var count = this.state.counter;
+			this.setState({
+				array: array,
+				counter: count + 1
+			});
+		}.bind(this);
+
+	}
+	pauseGame() {
+		this.setState({
+			pause: true,
+		});
+
+	}
+	clearAll() {
+		var currentArray = this.state.array.slice();
+		var newArray = [];
+		for (var a = 1; a < currentArray.length; a++) {
+			newArray[a] = 0;
+		}
+		this.setState({
+			counter: 0,
+			pause: true,
+			array: newArray
+		});
+	}
+	handleCoordinates(index) {
+		var currentArray = this.state.array.slice();
+		if (currentArray[index] === 1) {
+			currentArray[index] = 0;
+		}
+		else {
+			currentArray[index] = 1;
+		}
+		this.setState({
+			array: currentArray
+		})
+	}
+	renderRandomState() {
+		var array = [];
+		var width = 800;
+		var height = 480;
+		var side = width / 50 - 1;
+		for (var i = 1; i < 30 * 50 + 1; i++) {
+			var rand = Math.round(Math.random(1) * this.state.randomControlValue);
+			if (rand !== 1) { rand = 0 };
+			array[i] = rand;
+		}
+		this.setState({
+			side: side,
+			array: array
+		});
+	}
+	setFast() {
+		if (this.state.pause === false && this.state.running === true) {
+			this.setState({
+				pause: true,
+				generationTimer: 5
+			});
+			setTimeout(function() {
+				this.startGame();
+			}.bind(this), 15);
+		}
+		else {
+			this.setState({
+				generationTimer: 5
+			});
+		}
+	}	
+	setMedium() {
+		if (this.state.pause === false && this.state.running === true) {
+			this.setState({
+				pause: true,
+				generationTimer: 500
+			});
+			setTimeout(function() {
+				this.startGame();
+			}.bind(this), 15);
+		}
+		else {
+			this.setState({
+				generationTimer: 500
+			});
+		}
+	}
+	setSlow() {
+		if (this.state.pause === false && this.state.running === true) {
+			this.setState({
+				pause: true,
+				generationTimer: 1000
+			});
+			setTimeout(function() {
+				this.startGame();
+			}.bind(this), 15);
+		}
+		else {
+			this.setState({
+				generationTimer: 1000
+			});
+		}
+	}
+	setMost() {
+		this.setState({
+			randomControlValue: 3
+		});
+	}
+	setMany() {
+		this.setState({
+			randomControlValue: 6
+		});
+	}
+	setFew() {
+		this.setState({
+			randomControlValue: 15
+		});
+	}
+	componentWillMount() {
+		this.renderRandomState();
+	}
+	render() {
+		var red = "#F35887";
+		var activeRed = "#FF484D";
+		var blue = "#487FFF";
+		var blueActive = "#00dffc";
+
+		var fastStyle = { background: red }
+		var mediumStyle = { background: red }
+		var slowStyle = { background: red }
+
+		if (this.state.generationTimer === 5) { fastStyle = { background: activeRed } }
+		else if (this.state.generationTimer === 500) { mediumStyle = { background: activeRed } }
+		else if (this.state.generationTimer === 1000) { slowStyle = { background: activeRed } }
+
+		var fewStyle = { background: blue }
+		var manyStyle = { background:blue }
+		var mostStyle = { background: blue }
+
+		if (this.state.randomControlValue === 15) { fewStyle = { background: blueActive } }
+		else if (this.state.randomControlValue === 6) { manyStyle = { background: blueActive } }
+		else if (this.state.randomControlValue === 3) { mostStyle = { background: blueActive } }			
+
+		return (
+			<div>
+				<div className="infoBox">
+					<p className = "generationCount"><a target = "_blank" href="https://www.freecodecamp.com/challenges/build-the-game-of-life">Conway's Game of Life</a> — Current Generation: {this.state.counter}</p>
+				</div>
+				<div className="flexWrapper">
+					<div className="controlPanel">
+						<div className="controlBtns">
+							<button className = "startBtn" onClick = {this.startGame}>Start </button><br />
+							<button className = "pauseBtn" onClick = {this.pauseGame}>Pause </button><br />
+							<button className = "clearBtn" onClick = {this.clearAll}>Clear All </button><br />
+							<button className = "randomBtn" onClick = {this.renderRandomState}>New Grid</button>
+						</div>
+						<div className="selectRandom">
+							<button style = {mostStyle} className = "mostBtn" onClick = {this.setMost}>Most</button>
+							<button style = {manyStyle} className = "manyBtn" onClick = {this.setMany}>Many </button><br />
+							<button style = {fewStyle} className = "fewBtn" onClick = {this.setFew}>Few</button><br />
+						</div>
+						<div className = "speedBtns">
+							<button style = {fastStyle} className = "fastBtn" onClick = {this.setFast}>Fast</button>
+							<button style = {mediumStyle} className = "mediumBtn" onClick = {this.setMedium}>Medium </button><br />
+							<button style = {slowStyle} className = "slowBtn" onClick = {this.setSlow}>Slow</button><br />
+						</div>
+					</div>
+					<GameBoard 
+						array = {this.state.array}
+						side = {this.state.side}
+						handleCoordinates = {this.handleCoordinates} />
+				</div>
+			</div>
+		);
+	}
+};
+
+class GameBoard extends React.Component {
+	render() {
+		var boxStyle;
+		var arrays = this.props.array.map( (item, index) => {
+			// 1 represents alive:
+			if (item === 1) {
+				boxStyle = {
+					width: this.props.side,
+					height: this.props.side,
+					marginTop: 1,
+					marginRight: 1,
+					padding: 0,
+					background: '#272932'
+				};
+			}
+			// !== 1 represents dead:
+			else if (item !== 1) {
+				boxStyle = {
+					width: this.props.side,
+					height: this.props.side,
+					marginTop: 1,
+					marginRight: 1,
+					padding: 0,
+					background: '#00dffc'
+				};
+			}
+			return (
+				<div
+					className = "gameBox"
+					onClick = {this.props.handleCoordinates.bind(this, index)}
+					style = {boxStyle}
+					key = {index}>
+				</div>
+			);
+		});
+		return (
+			<div className="boardWrapper">
+				<div className="board">
+					{arrays}
+				</div>
+			</div>
+		);
+	}
+};
+
+ReactDOM.render(<App />, document.getElementById('main'));

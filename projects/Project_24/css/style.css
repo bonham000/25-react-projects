@@ -1,0 +1,94 @@
+body {
+  background: linear-gradient(#00dffc, #67D5B5) fixed no-repeat;
+  color: #274555;
+  padding: 0;
+  margin: 0;
+  min-height: 625px;
+  min-width: 1100px;
+}
+
+.infoBox {
+  padding-left: 5px;
+  color: #191919;
+  width: 950px;
+  margin: 10px auto -20px auto;
+}
+.infoBox a, .infoBox a:visited {
+  color: #191919;
+  text-decoration: none;
+}
+.infoBox a:hover {
+  color: #F45ABB;
+}
+.infoBox .generationCount {
+  padding-left: 150px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  margin-left: 0px;
+  font-size: 32px;
+}
+
+.flexWrapper {
+  display: flex;
+  justify-content: center;
+}
+.flexWrapper .controlPanel {
+  background: rgba(20, 20, 20, 0.5);
+  width: 150px;
+  text-align: center;
+  padding-top: 18px;
+  margin-right: 5px;
+}
+.flexWrapper .controlPanel button {
+  font-size: 22px;
+  font-family: "Ubuntu", sans-serif;
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  background: #fff1b9;
+  width: 115px;
+}
+.flexWrapper .controlPanel button:hover {
+  background: #FFFFF2;
+  cursor: pointer;
+}
+.flexWrapper .controlPanel button:focus {
+  outline: none;
+}
+.flexWrapper .controlPanel .speedBtns {
+  padding-top: 18px;
+}
+.flexWrapper .controlPanel .speedBtns button {
+  font-size: 22px;
+  font-family: "Ubuntu", sans-serif;
+  margin: 5px;
+  padding: 5px 8px;
+  border: none;
+  width: 115px;
+}
+.flexWrapper .controlPanel .speedBtns button:hover {
+  cursor: pointer;
+}
+.flexWrapper .controlPanel .selectRandom {
+  padding-top: 15px;
+}
+.flexWrapper .boardWrapper {
+  padding: 25px;
+  background: rgba(15, 15, 15, 0.75);
+  width: 800px;
+  height: 480px;
+}
+.flexWrapper .boardWrapper .board {
+  width: 800px;
+  height: 480px;
+  padding-left: 1px;
+  padding-bottom: 1px;
+  background: rgba(250, 250, 250, 0.25);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.flexWrapper .boardWrapper .gameBox:hover {
+  cursor: pointer;
+  background: #272932 !important;
+}
