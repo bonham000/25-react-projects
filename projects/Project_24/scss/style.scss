@@ -13,7 +13,7 @@ $Ubuntu: 'Ubuntu', sans-serif;
 
 // Styling:
 body {
-  background: linear-gradient($bright-blue, $mint) fixed no-repeat;
+  background: linear-gradient(to top right, $bright-blue, $mint) fixed no-repeat;
   color: $dark-blue;
   padding: 0;
   margin: 0;
@@ -31,7 +31,7 @@ body {
 		text-decoration: none;
 	}
 	a:hover {
-		color: #F45ABB;
+		color: #2A7CFF;
 	}
 	.generationCount {
 		padding-left: 150px;
@@ -88,22 +88,22 @@ body {
 	}
 	.boardWrapper {
 		padding: 25px;
-		background: rgba(15,15,15,0.75);
+		background: rgba(15,15,15,0.8);
 		width: 800px;
 		height: 480px;
 		.board {
+      background: none;
 			width: 800px;
 			height: 480px;
 			padding-left: 1px;
 			padding-bottom: 1px;
-			background: rgba(250,250,250,0.25);
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
 		}
 		.gameBox:hover {
 			cursor: pointer;
-			background: $heavy !important;
+			background: $tan !important;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -72,39 +72,40 @@ var App = function (_React$Component) {
 
 				// Iterate through current array and generate a verdict count based on the status of neighbor cells:
 				if (x === 1) {
-					verdict = a[x + 1] + a[x + 49] + a[x + 50] + a[x + 51];
+					verdict = a[x + 1][0] + a[x + 49][0] + a[x + 50][0] + a[x + 51][0];
 				} else if (x >= 2 && x <= 49) {
-					verdict = a[x - 1] + a[x + 1] + a[x + 49] + a[x + 50] + a[x + 51];
+					verdict = a[x - 1][0] + a[x + 1][0] + a[x + 49][0] + a[x + 50][0] + a[x + 51][0];
 				} else if (x === 50) {
-					verdict = a[x - 1] + a[x + 49] + a[x + 50];
+					verdict = a[x - 1][0] + a[x + 49][0] + a[x + 50][0];
 				} else if (x === 51) {
-					verdict = a[x + 1] + a[x - 50] + a[x - 49] + a[x + 50] + a[x + 51];
+					verdict = a[x + 1][0] + a[x - 50][0] + a[x - 49][0] + a[x + 50][0] + a[x + 51][0];
 				} else if (x > 51 && x <= 1449) {
-					verdict = a[x - 1] + a[x + 1] + a[x - 49] + a[x - 50] + a[x - 51] + a[x + 49] + a[x + 50] + a[x + 51];
+					verdict = a[x - 1][0] + a[x + 1][0] + a[x - 49][0] + a[x - 50][0] + a[x - 51][0] + a[x + 49][0] + a[x + 50][0] + a[x + 51][0];
 				} else if (x === 1450) {
-					verdict = a[x - 1] + a[x + 49] + a[x + 50];
+					verdict = a[x - 1][0] + a[x + 49][0] + a[x + 50][0];
 				} else if (x === 1451) {
-					verdict = a[x + 1] + a[x - 50] + a[x - 51];
+					verdict = a[x + 1][0] + a[x - 50][0] + a[x - 51][0];
 				} else if (x >= 1452 && x <= 1499) {
-					verdict = a[x - 1] + a[x + 1] + a[x - 49] + a[x - 50] + a[x - 51];
+					verdict = a[x - 1][0] + a[x + 1][0] + a[x - 49][0] + a[x - 50][0] + a[x - 51][0];
 				} else if (x === 1500) {
-					verdict = a[x - 1] + a[x - 49] + a[x - 50];
+					verdict = a[x - 1][0] + a[x - 49][0] + a[x - 50][0];
 				}
 
 				// Depending on the current state of each cell and its verdict, render it's fate according to the game rules:
-				if (a[x] === 0) {
+				if (a[x][0] === 0) {
+					// If a dead cells has 3 neighbors, a new cell appears; otherwise dead cells stay dead:
 					if (verdict === 3) {
-						nextGen[x] = 1;
+						nextGen[x] = [1, 'alive'];
 					} else {
-						nextGen[x] = 0;
+						nextGen[x] = [0, 'dead'];
 					}
-				} else if (a[x] === 1) {
+				} else if (a[x][0] === 1) {
 					if (verdict === 0 || verdict === 1) {
-						nextGen[x] = 0;
+						nextGen[x] = [0, 'killed'];
 					} else if (verdict >= 4) {
-						nextGen[x] = 0;
+						nextGen[x] = [0, 'killed'];
 					} else if (verdict === 2 || verdict === 3) {
-						nextGen[x] = 1;
+						nextGen[x] = [1, 'survivor'];
 					}
 				}
 			}
@@ -132,7 +133,7 @@ var App = function (_React$Component) {
 		var currentArray = this.state.array.slice();
 		var newArray = [];
 		for (var a = 1; a < currentArray.length; a++) {
-			newArray[a] = 0;
+			newArray[a] = [0, 'dead'];
 		}
 		this.setState({
 			counter: 0,
@@ -143,10 +144,10 @@ var App = function (_React$Component) {
 
 	App.prototype.handleCoordinates = function handleCoordinates(index) {
 		var currentArray = this.state.array.slice();
-		if (currentArray[index] === 1) {
-			currentArray[index] = 0;
+		if (currentArray[index][0] === 1) {
+			currentArray[index] = [0, 'dead'];
 		} else {
-			currentArray[index] = 1;
+			currentArray[index] = [1, 'alive'];
 		}
 		this.setState({
 			array: currentArray
@@ -160,10 +161,11 @@ var App = function (_React$Component) {
 		var side = width / 50 - 1;
 		for (var i = 1; i < 30 * 50 + 1; i++) {
 			var rand = Math.round(Math.random(1) * this.state.randomControlValue);
+			var condition = 'alive';
 			if (rand !== 1) {
-				rand = 0;
+				rand = 0;condition = 'dead';
 			};
-			array[i] = rand;
+			array[i] = [rand, condition];
 		}
 		this.setState({
 			side: side,
@@ -272,97 +274,97 @@ var App = function (_React$Component) {
 		}
 
 		return React.createElement(
-			"div",
+			'div',
 			null,
 			React.createElement(
-				"div",
-				{ className: "infoBox" },
+				'div',
+				{ className: 'infoBox' },
 				React.createElement(
-					"p",
-					{ className: "generationCount" },
+					'p',
+					{ className: 'generationCount' },
 					React.createElement(
-						"a",
-						{ target: "_blank", href: "https://www.freecodecamp.com/challenges/build-the-game-of-life" },
-						"Conway's Game of Life"
+						'a',
+						{ target: '_blank', href: 'https://www.freecodecamp.com/challenges/build-the-game-of-life' },
+						'Conway\'s Game of Life'
 					),
-					" — Current Generation: ",
+					' — Current Generation: ',
 					this.state.counter
 				)
 			),
 			React.createElement(
-				"div",
-				{ className: "flexWrapper" },
+				'div',
+				{ className: 'flexWrapper' },
 				React.createElement(
-					"div",
-					{ className: "controlPanel" },
+					'div',
+					{ className: 'controlPanel' },
 					React.createElement(
-						"div",
-						{ className: "controlBtns" },
+						'div',
+						{ className: 'controlBtns' },
 						React.createElement(
-							"button",
-							{ className: "startBtn", onClick: this.startGame },
-							"Start "
+							'button',
+							{ className: 'startBtn', onClick: this.startGame },
+							'Start '
 						),
-						React.createElement("br", null),
+						React.createElement('br', null),
 						React.createElement(
-							"button",
-							{ className: "pauseBtn", onClick: this.pauseGame },
-							"Pause "
+							'button',
+							{ className: 'pauseBtn', onClick: this.pauseGame },
+							'Pause '
 						),
-						React.createElement("br", null),
+						React.createElement('br', null),
 						React.createElement(
-							"button",
-							{ className: "clearBtn", onClick: this.clearAll },
-							"Clear All "
+							'button',
+							{ className: 'clearBtn', onClick: this.clearAll },
+							'Clear All '
 						),
-						React.createElement("br", null),
+						React.createElement('br', null),
 						React.createElement(
-							"button",
-							{ className: "randomBtn", onClick: this.renderRandomState },
-							"New Grid"
+							'button',
+							{ className: 'randomBtn', onClick: this.renderRandomState },
+							'New Grid'
 						)
 					),
 					React.createElement(
-						"div",
-						{ className: "selectRandom" },
+						'div',
+						{ className: 'selectRandom' },
 						React.createElement(
-							"button",
-							{ style: mostStyle, className: "mostBtn", onClick: this.setMost },
-							"Most"
+							'button',
+							{ style: mostStyle, className: 'mostBtn', onClick: this.setMost },
+							'Most'
 						),
 						React.createElement(
-							"button",
-							{ style: manyStyle, className: "manyBtn", onClick: this.setMany },
-							"Many "
+							'button',
+							{ style: manyStyle, className: 'manyBtn', onClick: this.setMany },
+							'Many '
 						),
-						React.createElement("br", null),
+						React.createElement('br', null),
 						React.createElement(
-							"button",
-							{ style: fewStyle, className: "fewBtn", onClick: this.setFew },
-							"Few"
+							'button',
+							{ style: fewStyle, className: 'fewBtn', onClick: this.setFew },
+							'Few'
 						),
-						React.createElement("br", null)
+						React.createElement('br', null)
 					),
 					React.createElement(
-						"div",
-						{ className: "speedBtns" },
+						'div',
+						{ className: 'speedBtns' },
 						React.createElement(
-							"button",
-							{ style: fastStyle, className: "fastBtn", onClick: this.setFast },
-							"Fast"
+							'button',
+							{ style: fastStyle, className: 'fastBtn', onClick: this.setFast },
+							'Fast'
 						),
 						React.createElement(
-							"button",
-							{ style: mediumStyle, className: "mediumBtn", onClick: this.setMedium },
-							"Medium "
+							'button',
+							{ style: mediumStyle, className: 'mediumBtn', onClick: this.setMedium },
+							'Medium '
 						),
-						React.createElement("br", null),
+						React.createElement('br', null),
 						React.createElement(
-							"button",
-							{ style: slowStyle, className: "slowBtn", onClick: this.setSlow },
-							"Slow"
+							'button',
+							{ style: slowStyle, className: 'slowBtn', onClick: this.setSlow },
+							'Slow'
 						),
-						React.createElement("br", null)
+						React.createElement('br', null)
 					)
 				),
 				React.createElement(GameBoard, {
@@ -390,42 +392,41 @@ var GameBoard = function (_React$Component2) {
 	GameBoard.prototype.render = function render() {
 		var _this3 = this;
 
-		var boxStyle;
+		var baseStyle = {
+			width: this.props.side,
+			height: this.props.side,
+			marginTop: 1,
+			marginRight: 1,
+			padding: 0
+		};
+
 		var arrays = this.props.array.map(function (item, index) {
-			// 1 represents alive:
-			if (item === 1) {
-				boxStyle = {
-					width: _this3.props.side,
-					height: _this3.props.side,
-					marginTop: 1,
-					marginRight: 1,
-					padding: 0,
-					background: '#272932'
-				};
+
+			var boxStyle;
+
+			// Render box background conditionally based on cell state, e.g. alive, survived, killed, dead:
+			if (item[1] === 'alive') {
+				boxStyle = { background: '#00dffc' };
+			} else if (item[1] === 'survivor') {
+				boxStyle = { background: '#2A7CFF' };
+			} else if (item[1] === 'killed') {
+				boxStyle = { background: '#6B66F7' };
+			} else if (item[1] === 'dead') {
+				boxStyle = { background: 'none' };
 			}
-			// !== 1 represents dead:
-			else if (item !== 1) {
-					boxStyle = {
-						width: _this3.props.side,
-						height: _this3.props.side,
-						marginTop: 1,
-						marginRight: 1,
-						padding: 0,
-						background: '#00dffc'
-					};
-				}
-			return React.createElement("div", {
-				className: "gameBox",
+
+			return React.createElement('div', {
+				className: 'gameBox',
 				onClick: _this3.props.handleCoordinates.bind(_this3, index),
-				style: boxStyle,
+				style: Object.assign({}, baseStyle, boxStyle),
 				key: index });
 		});
 		return React.createElement(
-			"div",
-			{ className: "boardWrapper" },
+			'div',
+			{ className: 'boardWrapper' },
 			React.createElement(
-				"div",
-				{ className: "board" },
+				'div',
+				{ className: 'board' },
 				arrays
 			)
 		);

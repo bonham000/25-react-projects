@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(#00dffc, #67D5B5) fixed no-repeat;
+  background: linear-gradient(to top right, #00dffc, #67D5B5) fixed no-repeat;
   color: #274555;
   padding: 0;
   margin: 0;
@@ -18,7 +18,7 @@ body {
   text-decoration: none;
 }
 .infoBox a:hover {
-  color: #F45ABB;
+  color: #2A7CFF;
 }
 .infoBox .generationCount {
   padding-left: 150px;
@@ -74,21 +74,21 @@ body {
 }
 .flexWrapper .boardWrapper {
   padding: 25px;
-  background: rgba(15, 15, 15, 0.75);
+  background: rgba(15, 15, 15, 0.8);
   width: 800px;
   height: 480px;
 }
 .flexWrapper .boardWrapper .board {
+  background: none;
   width: 800px;
   height: 480px;
   padding-left: 1px;
   padding-bottom: 1px;
-  background: rgba(250, 250, 250, 0.25);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 .flexWrapper .boardWrapper .gameBox:hover {
   cursor: pointer;
-  background: #272932 !important;
+  background: #fff1b9 !important;
 }
