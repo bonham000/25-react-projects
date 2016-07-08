@@ -2,6 +2,7 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
+      speed: 'fast',
 			counter: 0,
 			pause: false,
 			running: false,
@@ -11,6 +12,7 @@ class App extends React.Component {
 		};
 		this.renderRandomState = this.renderRandomState.bind(this);
 		this.handleCoordinates = this.handleCoordinates.bind(this);
+    this.handleStartBtn = this.handleStartBtn.bind(this);
 		this.startGame = this.startGame.bind(this);
 		this.pauseGame = this.pauseGame.bind(this)
 		this.clearAll = this.clearAll.bind(this);
@@ -21,35 +23,38 @@ class App extends React.Component {
 		this.setMany = this.setMany.bind(this);
 		this.setMost = this.setMost.bind(this);
 	}
+  handleStartBtn() {
+    if (this.state.pause === true) {
+      this.setState({
+        pause: false
+      });
+    }
+    this.startGame();
+  }
 	startGame() {
 
 		var speed = this.state.generationTimer;
 
-		this.setState({
+   	this.setState({
 			running: true
 		});
-
-		if (this.state.pause === true) {
-			this.setState({
-				pause: false
-			});
-		}
-
+    
 		function pauseGame() {
 			clearInterval(timer);
 		};
+    
+    var check = setInterval(function() {
+     if (this.state.pause === true) {
+      pauseGame(); 
+     }
+    }.bind(this), 5);
 
 		var timer = setInterval(function() {
-			if (this.state.pause === true) {
-				pauseGame();
-			}
-			else {
-				var a = this.state.array.slice();
-				generate(a);
-			}
+      var a = this.state.array.slice();
+      generate(a);
 		}.bind(this), speed);
 
-		function generate(a) {
+		var generate = function(a) {
 
 			var nextGen = [];
 			var verdict;
@@ -79,12 +84,12 @@ class App extends React.Component {
 					else if ( verdict === 2 || verdict === 3 ) { nextGen[x] = [1, 'survivor']; }
 				}
 
-			}
+			}       
 
 			// Submit the next generation array for rendering:
 			renderNextGeneration(nextGen);
-
-		};
+        
+      }
 
 		var renderNextGeneration = function(array) {
 			var count = this.state.counter;
@@ -96,10 +101,7 @@ class App extends React.Component {
 
 	}
 	pauseGame() {
-		this.setState({
-			pause: true,
-		});
-
+		this.setState({ pause: true });
 	}
 	clearAll() {
 		var currentArray = this.state.array.slice();
@@ -137,57 +139,73 @@ class App extends React.Component {
 			array[i] = [rand, condition];
 		}
 		this.setState({
+      counter: 0,
 			side: side,
 			array: array
 		});
 	}
 	setFast() {
-		if (this.state.pause === false && this.state.running === true) {
+		if (this.state.pause === false && this.state.speed !== 'fast') {
 			this.setState({
+        speed: 'fast',
 				pause: true,
 				generationTimer: 5
 			});
 			setTimeout(function() {
+        this.setState({
+          pause: false
+        });
 				this.startGame();
 			}.bind(this), 15);
 		}
-		else {
-			this.setState({
-				generationTimer: 5
-			});
-		}
+    else if (this.state.pause === true && this.state.speed !== 'fast') {
+      this.setState({
+        speed: 'fast',
+        generationTimer: 5
+      });
+    }
 	}	
 	setMedium() {
-		if (this.state.pause === false && this.state.running === true) {
+		if (this.state.pause === false && this.state.speed !== 'medium') {
 			this.setState({
+        speed: 'medium',
 				pause: true,
 				generationTimer: 500
-			});
+			}); 
 			setTimeout(function() {
+        this.setState({
+          pause: false
+        });
 				this.startGame();
 			}.bind(this), 15);
 		}
-		else {
-			this.setState({
-				generationTimer: 500
-			});
-		}
+    else if (this.state.pause === true && this.state.speed !== 'medium') {
+      this.setState({
+        speed: 'medium',
+        generationTimer: 500
+      });
+    }
 	}
 	setSlow() {
-		if (this.state.pause === false && this.state.running === true) {
+		if (this.state.pause === false && this.state.speed !== 'slow') {
 			this.setState({
+        speed: 'slow',
 				pause: true,
-				generationTimer: 1000
+        generationTimer: 1000
 			});
 			setTimeout(function() {
-				this.startGame();
+				this.setState({
+			pause: false
+			});
+			this.startGame();
 			}.bind(this), 15);
 		}
-		else {
-			this.setState({
-				generationTimer: 1000
-			});
-		}
+    else if (this.state.pause === true && this.state.speed !== 'slow') {
+      this.setState({
+        speed: 'slow',
+        generationTimer: 1000
+      });
+    }
 	}
 	setMost() {
 		this.setState({
@@ -237,7 +255,7 @@ class App extends React.Component {
 				<div className="flexWrapper">
 					<div className="controlPanel">
 						<div className="controlBtns">
-							<button className = "startBtn" onClick = {this.startGame}>Start </button><br />
+							<button className = "startBtn" onClick = {this.handleStartBtn}>Start </button><br />
 							<button className = "pauseBtn" onClick = {this.pauseGame}>Pause </button><br />
 							<button className = "clearBtn" onClick = {this.clearAll}>Clear All </button><br />
 							<button className = "randomBtn" onClick = {this.renderRandomState}>New Grid</button>

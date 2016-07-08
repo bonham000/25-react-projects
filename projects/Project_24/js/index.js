@@ -15,6 +15,7 @@ var App = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, _React$Component.call(this));
 
 		_this.state = {
+			speed: 'fast',
 			counter: 0,
 			pause: false,
 			running: false,
@@ -24,6 +25,7 @@ var App = function (_React$Component) {
 		};
 		_this.renderRandomState = _this.renderRandomState.bind(_this);
 		_this.handleCoordinates = _this.handleCoordinates.bind(_this);
+		_this.handleStartBtn = _this.handleStartBtn.bind(_this);
 		_this.startGame = _this.startGame.bind(_this);
 		_this.pauseGame = _this.pauseGame.bind(_this);
 		_this.clearAll = _this.clearAll.bind(_this);
@@ -36,6 +38,15 @@ var App = function (_React$Component) {
 		return _this;
 	}
 
+	App.prototype.handleStartBtn = function handleStartBtn() {
+		if (this.state.pause === true) {
+			this.setState({
+				pause: false
+			});
+		}
+		this.startGame();
+	};
+
 	App.prototype.startGame = function startGame() {
 
 		var speed = this.state.generationTimer;
@@ -44,26 +55,22 @@ var App = function (_React$Component) {
 			running: true
 		});
 
-		if (this.state.pause === true) {
-			this.setState({
-				pause: false
-			});
-		}
-
 		function pauseGame() {
 			clearInterval(timer);
 		};
 
-		var timer = setInterval(function () {
+		var check = setInterval(function () {
 			if (this.state.pause === true) {
 				pauseGame();
-			} else {
-				var a = this.state.array.slice();
-				generate(a);
 			}
+		}.bind(this), 5);
+
+		var timer = setInterval(function () {
+			var a = this.state.array.slice();
+			generate(a);
 		}.bind(this), speed);
 
-		function generate(a) {
+		var generate = function generate(a) {
 
 			var nextGen = [];
 			var verdict;
@@ -124,9 +131,7 @@ var App = function (_React$Component) {
 	};
 
 	App.prototype.pauseGame = function pauseGame() {
-		this.setState({
-			pause: true
-		});
+		this.setState({ pause: true });
 	};
 
 	App.prototype.clearAll = function clearAll() {
@@ -168,54 +173,70 @@ var App = function (_React$Component) {
 			array[i] = [rand, condition];
 		}
 		this.setState({
+			counter: 0,
 			side: side,
 			array: array
 		});
 	};
 
 	App.prototype.setFast = function setFast() {
-		if (this.state.pause === false && this.state.running === true) {
+		if (this.state.pause === false && this.state.speed !== 'fast') {
 			this.setState({
+				speed: 'fast',
 				pause: true,
 				generationTimer: 5
 			});
 			setTimeout(function () {
+				this.setState({
+					pause: false
+				});
 				this.startGame();
 			}.bind(this), 15);
-		} else {
+		} else if (this.state.pause === true && this.state.speed !== 'fast') {
 			this.setState({
+				speed: 'fast',
 				generationTimer: 5
 			});
 		}
 	};
 
 	App.prototype.setMedium = function setMedium() {
-		if (this.state.pause === false && this.state.running === true) {
+		if (this.state.pause === false && this.state.speed !== 'medium') {
 			this.setState({
+				speed: 'medium',
 				pause: true,
 				generationTimer: 500
 			});
 			setTimeout(function () {
+				this.setState({
+					pause: false
+				});
 				this.startGame();
 			}.bind(this), 15);
-		} else {
+		} else if (this.state.pause === true && this.state.speed !== 'medium') {
 			this.setState({
+				speed: 'medium',
 				generationTimer: 500
 			});
 		}
 	};
 
 	App.prototype.setSlow = function setSlow() {
-		if (this.state.pause === false && this.state.running === true) {
+		if (this.state.pause === false && this.state.speed !== 'slow') {
 			this.setState({
+				speed: 'slow',
 				pause: true,
 				generationTimer: 1000
 			});
 			setTimeout(function () {
+				this.setState({
+					pause: false
+				});
 				this.startGame();
 			}.bind(this), 15);
-		} else {
+		} else if (this.state.pause === true && this.state.speed !== 'slow') {
 			this.setState({
+				speed: 'slow',
 				generationTimer: 1000
 			});
 		}
@@ -302,7 +323,7 @@ var App = function (_React$Component) {
 						{ className: 'controlBtns' },
 						React.createElement(
 							'button',
-							{ className: 'startBtn', onClick: this.startGame },
+							{ className: 'startBtn', onClick: this.handleStartBtn },
 							'Start '
 						),
 						React.createElement('br', null),
