@@ -58,7 +58,11 @@
 
 			<div class = "contentWrapper">
 				<h1 class = "contentTitle">What is React?</h1>
-				<p class = "contentText">React is a powerful and influential Javascript library developed by Facebook and open sourced a few years ago. It has since gained in popularity throughout the Javascript world, despite some initial skepticism. It describes itself as the 'V' in the MVC model, uses a virtual DOM to render HTML updates in a very efficient manner, and allows you to write HTML within your Javascript code (really!).</p>
+				<p class = "contentText">React is a powerful and influential Javascript library developed by Facebook and open sourced a few years ago. It is being adopted increasingly throughout the Javascript world, despite receiving some skepticism initially. It describes itself as the 'V' in the MVC model, uses a virtual DOM to render HTML updates in a very efficient manner, and allows you to write HTML within your Javascript code (really!). It's getting quite popular:</p>
+
+				<div class="highCharts">
+					<div id = "trends"></div>
+				</div>
 
 				<p class="contentText">Today React comes with a wide range of tools and additional libraries that allow entire applications to be build with React, and there are even projects like React Native that port React to native mobile systems. React works by breaking everything down into components and places strict but clear rules on how data can flow between, and change, these components. This makes designing an application conceptually simple and also breaks the code into discrete, composable pieces that are very easy to work with.</p>
 
@@ -105,6 +109,8 @@
 
 	</body>
 
+	<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+	<script src='http://code.highcharts.com/highcharts.js'></script>
 	<script type = "text/javascript" src = "./assets/index.js"></script>
 	
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
