@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-  font-size: 65px;
+  font-size: 50px;
   font-weight: normal;
   color: #FF5E33;
 }
@@ -14,12 +14,12 @@ h1 {
 // Styling for control buttons:
 .controlWrapper {
   .allBtn {
-    margin-top: -20px;
-    margin-bottom: 25px;
+    margin-top: -25px;
+    margin-bottom: 15px;
   }
   button {
-    width: 200px;
-    font-size: 25px;
+    width: 175px;
+    font-size: 22px;
     padding: 10px;
     margin: 5px;
     font-family: Avenir;
@@ -47,6 +47,7 @@ h1 {
     flex-wrap: wrap;
     hr {
       margin-top: 25px;
+      margin-bottom: -45px;
       width: 85vw;
       border: 1px solid #F8F4A6;
     }
@@ -142,11 +143,11 @@ h1 {
   max-height: 0;
 }
 .heightInDiv-enter.heightInDiv-enter-active {
-  max-height: 250px;
+  max-height: 150px;
   transition: max-height 1000ms ease-in;
 }
 .heightInDiv-leave {
-  max-height: 250px;
+  max-height: 150px;
 }
 .heightInDiv-leave.heightInDiv-leave-active {
   max-height: 0;
@@ -158,11 +159,11 @@ h1 {
   max-width: 0;
 }
 .widthInDiv-enter.widthInDiv-enter-active {
-  max-width: 250px;
+  max-width: 150px;
   transition: max-width 750ms ease-in;
 }
 .widthInDiv-leave {
-  max-width: 250px;
+  max-width: 150px;
 }
 .widthInDiv-leave.widthInDiv-leave-active {
   max-width: 0;
@@ -185,13 +186,13 @@ h1 {
   max-height: 0;
 }
 .sizeInDiv-enter.sizeInDiv-enter-active {
-  max-width: 250px;
-  max-height: 250px;
+  max-width: 150px;
+  max-height: 150px;
   transition: max-width 650ms ease-in, max-height 750ms ease-in;
 }
 .sizeInDiv-leave {
-  max-width: 250px;
-  max-height: 250px;
+  max-width: 150px;
+  max-height: 150px;
 }
 .sizeInDiv-leave.sizeInDiv-leave-active {
   max-width: 0;

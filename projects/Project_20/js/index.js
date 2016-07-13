@@ -10,14 +10,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 var transitionDivStyle = {
-  'width': '250px',
-  'height': '250px',
+  'width': '150px',
+  'height': '150px',
   'padding': '10px',
   'margin': '25px',
   'display': 'flex',
   'justifyContent': 'center',
   'alignItems': 'center',
-  'fontSize': '30px',
+  'fontSize': '22px',
   'fontFamily': 'Avenir',
   'fontWeight': 'bold',
   'cursor': 'pointer',
