@@ -1,0 +1,535 @@
+
+// Some global style definitions:
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
+var transitionDivStyle = {
+  'width': '250px',
+  'height': '250px',
+  'padding': '10px',
+  'margin': '25px',
+  'display': 'flex',
+  'justifyContent': 'center',
+  'alignItems': 'center',
+  'fontSize': '30px',
+  'fontFamily': 'Avenir',
+  'fontWeight': 'bold',
+  'cursor': 'pointer',
+  'borderRadius': '5px',
+  'color': 'rgb(25,25,25)'
+};
+
+var btnActive = { 'background': '#06FF96' };
+var btnInactive = { 'background': '#FDD692' };
+
+// Root Component:
+class Root extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      toggleAll: true,
+      fade: true,
+      slideIn: true,
+      slideUp: true,
+      slider: true,
+      height: true,
+      width: false,
+      size: false,
+      rotate: false
+    };
+    
+    this.toggleAll = this.toggleAll.bind(this);
+    this.toggleFade = this.toggleFade.bind(this);
+    this.toggleSlideIn = this.toggleSlideIn.bind(this);
+    this.toggleSlideUp = this.toggleSlideUp.bind(this);
+    this.toggleSlider = this.toggleSlider.bind(this);
+    this.toggleHeightIn = this.toggleHeightIn.bind(this);
+    this.toggleWidthIn = this.toggleWidthIn.bind(this);
+    this.toggleSize = this.toggleSize.bind(this);
+    this.toggleRotate = this.toggleRotate.bind(this);
+    
+  }
+  toggleAll() {
+    if (!this.state.toggleAll) {
+      
+      this.setState({
+        toggleAll: true,
+        fade: true,
+        slideIn: true,
+        slideUp: true,
+        slider: true,
+        height: true,
+      });
+      
+      if (!this.state.width) {
+        this.toggleWidthIn();
+      }
+      
+      if (!this.state.size) {
+        this.toggleSize();
+      }
+      
+      if (!this.state.rotate) {
+        this.toggleRotate();
+      }
+      
+    }
+    else {
+      
+      this.setState({
+        toggleAll: false,
+        fade: false,
+        slideIn: false,
+        slideUp: false,
+        slider: false,
+        height: false,
+        rotate: false,
+      });
+      
+      if (this.state.width) {
+        this.toggleWidthIn();
+      }
+      
+      if (this.state.size) {
+        this.toggleSize();
+      }
+      
+      if (this.state.rotate) {
+        this.toggleRotate();
+      }
+      
+    }
+  }
+  toggleFade() {
+    if (!this.state.fade) {
+      this.setState({
+        fade: true
+      });
+    }
+    else {
+      this.setState({
+        fade: false
+      });
+    }
+  }
+  toggleSlideIn() {
+    if (!this.state.slideIn) {
+      this.setState({
+        slideIn: true
+      });
+    }
+    else {
+      this.setState({
+        slideIn: false
+      });
+    }
+  }
+  toggleSlideUp() {
+    if (!this.state.slideUp) {
+      this.setState({
+        slideUp: true
+      });
+    }
+    else {
+      this.setState({
+        slideUp: false
+      });
+    }
+  }
+  toggleSlider() {
+    if (!this.state.slider) {
+      this.setState({
+        slider: true
+      });
+    }
+    else {
+      this.setState({
+        slider: false
+      });
+    }
+  }
+  toggleHeightIn() {
+    if (!this.state.height) {
+      this.setState({
+        height: true
+      });
+    }
+    else {
+      this.setState({
+        height: false
+      });
+    }
+  }
+  toggleWidthIn() {
+    if (!this.state.width) {
+      this.setState({
+        width: true
+      });
+      setTimeout(function() {
+        var element = document.getElementById('widthInId');
+        element.classList.add('widthInTextAfter');
+      }, 15);
+    }
+    else {
+      this.setState({
+        width: false
+      });
+      var element = document.getElementById('widthInId');
+      element.className = element.className.replace('widthInTextAfter', '');
+    }
+  }
+  toggleSize() {
+    if (!this.state.size) {
+      this.setState({
+        size: true
+      });
+      setTimeout(function() {
+        var element = document.getElementById('sizeDivId');
+        element.classList.add('sizeTextAfter');
+      }, 15);
+    }
+    else {
+      this.setState({
+        size: false
+      });
+      var element = document.getElementById('sizeDivId');
+      element.className = element.className.replace('sizeTextAfter', '');
+    }
+  }
+  toggleRotate() {
+    if (!this.state.rotate) {
+      this.setState({
+        rotate: true
+      });
+      setTimeout(function() {
+        var element = document.getElementById('rotateDivId');
+        element.classList.add('rotateTextAfter');
+      }, 15);
+    }
+    else {
+      this.setState({
+        rotate: false
+      });
+      var element = document.getElementById('rotateDivId');
+      element.className = element.className.replace('rotateTextAfter', '');
+    }
+  }  
+  componentWillMount() {
+    this.toggleWidthIn();
+    this.toggleSize();
+    this.toggleRotate();
+  };
+  render() {
+    return (
+      <div>
+        <h1>React CSS Transition Demos</h1>
+        <Controller
+          toggleAllBtns = {this.state.toggleAll}
+          fade = {this.state.fade}
+          slideIn = {this.state.slideIn}
+          slideUp = {this.state.slideUp}
+          slider = {this.state.slider}
+          height = {this.state.height}
+          width = {this.state.width}
+          size = {this.state.size}
+          rotate = {this.state.rotate}
+          toggleAll = {this.toggleAll}
+          toggleFade = {this.toggleFade}
+          toggleSlideIn = {this.toggleSlideIn}
+          toggleSlideUp = {this.toggleSlideUp}
+          toggleSlider = {this.toggleSlider}
+          toggleHeightIn = {this.toggleHeightIn}
+          toggleWidthIn = {this.toggleWidthIn}
+          toggleSize = {this.toggleSize}
+          toggleRotate = {this.toggleRotate} />          
+        <div className = "transitionsContainer">
+          <FadeIn fade = {this.state.fade} toggleFade = {this.toggleFade} />
+          <SlideIn slideIn = {this.state.slideIn} toggleSlideIn = {this.toggleSlideIn} />
+          <SlideUp slideUp = {this.state.slideUp} toggleSlideUp = {this.toggleSlideUp} />
+          <Slider slider = {this.state.slider} toggleSlider = {this.toggleSlider} />
+          <HeightIn height = {this.state.height} toggleHeightIn = {this.toggleHeightIn} />
+          <WidthIn width = {this.state.width} toggleWidthIn = {this.toggleWidthIn} />
+          <SizeIn size = {this.state.size} toggleSize = {this.toggleSize} />
+          <RotateIn rotate = {this.state.rotate} toggleRotate = {this.toggleRotate} />
+        </div>
+      </div>
+    );
+  }
+};
+
+// Component for button controls:
+class Controller extends React.Component {
+  render() {
+    var toggleAllText = "Toggle All On";
+    var toggleAllBtnStyle = btnInactive;
+    if (this.props.toggleAllBtns) {
+      toggleAllBtnStyle = btnActive;
+      toggleAllText = "Toggle All Off";
+    }     
+    var fadeText = "Fade In";
+    var fadeBtnStyle = btnInactive;
+    if (this.props.fade) {
+      fadeBtnStyle = btnActive;
+      fadeText = "Fade Out";
+    }
+    var slideInText = "Slide In Left";
+    var slideInBtnStyle = btnInactive;
+    if (this.props.slideIn) {
+      slideInBtnStyle = btnActive;
+      slideInText = "Slide Out Right";
+    }
+    var slideUpText = "Slide In Down";
+    var slideUpBtnStyle = btnInactive;
+    if (this.props.slideUp) {
+      slideUpBtnStyle = btnActive;
+      slideUpText = "Slide Out Up";
+    }
+    var sliderText = "Slider In";
+    var sliderBtnStyle = btnInactive;
+    if (this.props.slider) {
+      sliderBtnStyle = btnActive;
+      sliderText = "Slider Out";
+    }
+    var heightText = "Height In";
+    var heightBtnStyle = btnInactive;
+    if (this.props.height) {
+      heightBtnStyle = btnActive;
+      heightText = "Height Out";
+    }
+    var widthText = "Width In";
+    var widthBtnStyle = btnInactive;
+    if (this.props.width) {
+      widthBtnStyle = btnActive;
+      widthText = "Width Out";
+    }
+    var sizeText = "Size In";
+    var sizeBtnStyle = btnInactive;
+    if (this.props.size) {
+      sizeBtnStyle = btnActive;
+      sizeText = "Size Out";
+    }
+    var rotateText = "Rotate In";
+    var rotateBtnStyle = btnInactive;
+    if (this.props.rotate) {
+      rotateBtnStyle = btnActive;
+      rotateText = "Rotate Out";
+    }    
+    return (
+      <div className = "controlWrapper">
+        <button style = {toggleAllBtnStyle} onClick = {this.props.toggleAll} className = "allBtn">{toggleAllText}</button>
+        <div className = "controls">
+          <button style = {fadeBtnStyle} onClick = {this.props.toggleFade}>{fadeText}</button>
+          <button style = {slideInBtnStyle} onClick = {this.props.toggleSlideIn}>{slideInText}</button>
+          <button style = {slideUpBtnStyle} onClick = {this.props.toggleSlideUp}>{slideUpText}</button>
+          <button style = {sliderBtnStyle} onClick = {this.props.toggleSlider}>{sliderText}</button>
+          <button style = {heightBtnStyle} onClick = {this.props.toggleHeightIn}>{heightText}</button>
+          <button style = {widthBtnStyle} onClick = {this.props.toggleWidthIn}>{widthText}</button>
+          <button style = {sizeBtnStyle} onClick = {this.props.toggleSize}>{sizeText}</button>
+          <button style = {rotateBtnStyle} onClick = {this.props.toggleRotate}>{rotateText}</button>          
+          <hr />
+        </div>
+      </div>
+    );
+  }
+};
+
+// Fade In Component:
+class FadeIn extends React.Component {
+  render() {
+    var background = {
+      'background': '#c03546'
+    }
+    var component;
+    if (this.props.fade) {
+      component = (
+        <div style = {Object.assign({}, transitionDivStyle, background)} onClick = {this.props.toggleFade} className = "transitionBox">
+          <p>This div fades in and out</p>
+        </div>
+      )
+    }
+    return (
+      <ReactCSSTransitionGroup
+        transitionName = 'fadeDiv'
+        transitionEnterTimeout = {1000}
+        transitionLeaveTimeout = {1000}>
+        {component}
+      </ReactCSSTransitionGroup>
+    );
+  }
+};
+
+// Slide In Component:
+class SlideIn extends React.Component {
+  render() {
+    var background = {
+      'background': '#004e66'
+    }
+    var component;
+    if (this.props.slideIn) {
+      component = (
+        <div style = {Object.assign({}, transitionDivStyle, background)} onClick = {this.props.toggleSlideIn} className = "transitionBox">
+          <p>This div slides in and out</p>
+        </div>
+      )
+    }
+    return (
+      <ReactCSSTransitionGroup
+        transitionName = 'slideInDiv'
+        transitionEnterTimeout = {800}
+        transitionLeaveTimeout = {800}>
+        {component}
+      </ReactCSSTransitionGroup>
+    );
+  }
+};
+
+// Slide Up Component:
+class SlideUp extends React.Component {
+  render() {
+    var background = {
+      'background': '#f8ca00'
+    }
+    var component;
+    if (this.props.slideUp) {
+      component = (
+        <div style = {Object.assign({}, transitionDivStyle, background)} onClick = {this.props.toggleSlideUp} className = "transitionBox">
+          <p>This div slides up and down</p>
+        </div>
+      )
+    }
+    return (
+      <ReactCSSTransitionGroup
+        transitionName = 'slideUpDiv'
+        transitionEnterTimeout = {800}
+        transitionLeaveTimeout = {800}>
+        {component}
+      </ReactCSSTransitionGroup>
+    );
+  }
+};
+
+// Slider Component:
+class Slider extends React.Component {
+  render() {
+    var background = {
+      'background': '#348AA7'
+    }
+    var component;
+    if (this.props.slider) {
+      component = (
+        <div style = {Object.assign({}, transitionDivStyle, background)} onClick = {this.props.toggleSlider} className = "transitionBox">
+          <p>This div slides around</p>
+        </div>
+      )
+    }
+    return (
+      <ReactCSSTransitionGroup
+        transitionName = 'sliderDiv'
+        transitionEnterTimeout = {1000}
+        transitionLeaveTimeout = {1000}>
+        {component}
+      </ReactCSSTransitionGroup>
+    );
+  }
+};
+
+// Height In/Out Component:
+class HeightIn extends React.Component {
+  render() {
+    var background = {
+      'background': '#BF4E30'
+    }
+    var component;
+    if (this.props.height) {
+      component = (
+        <div style = {Object.assign({}, transitionDivStyle, background)} onClick = {this.props.toggleHeightIn} className = "transitionBox">
+          <p>This div grows and squishes</p>
+        </div>
+      )
+    }
+    return (
+      <ReactCSSTransitionGroup
+        transitionName = 'heightInDiv'
+        transitionEnterTimeout = {1000}
+        transitionLeaveTimeout = {1000}>
+        {component}
+      </ReactCSSTransitionGroup>
+    );
+  }
+};
+
+// Width In/Out Component:
+class WidthIn extends React.Component {
+  render() {
+    var background = {
+      'background': '#ed317f'
+    }
+    var component;
+    if (this.props.width) {
+      component = (
+        <div style = {Object.assign({}, transitionDivStyle, background)} onClick = {this.props.toggleWidthIn} className = "transitionBox">
+          <p id = 'widthInId' className = 'widthInTextBefore'>This div expands and squeezes (with fade in text!)</p>
+        </div>
+      );      
+    }
+    return (
+      <ReactCSSTransitionGroup
+        transitionName = 'widthInDiv'
+        transitionEnterTimeout = {750}
+        transitionLeaveTimeout = {1000}>
+        {component}
+      </ReactCSSTransitionGroup>
+    );
+  }
+};
+
+// Size In/Out Component:
+class SizeIn extends React.Component {
+  render() {
+    var background = {
+      'background': '#1D2D44'
+    }
+    var component;
+    if (this.props.size) {
+      component = (
+        <div style = {Object.assign({}, transitionDivStyle, background)} onClick = {this.props.toggleSize} className = "transitionBox">
+          <p id = "sizeDivId" className = "sizeTextBefore">This div expands and contracts (with fade in text!)</p>
+        </div>
+      );      
+    }
+    return (
+      <ReactCSSTransitionGroup
+        transitionName = 'sizeInDiv'
+        transitionEnterTimeout = {750}
+        transitionLeaveTimeout = {1000}>
+        {component}
+      </ReactCSSTransitionGroup>
+    );
+  }
+};
+
+// Size In/Out Component:
+class RotateIn extends React.Component {
+  render() {
+    var background = {
+      'background': '#5B3758'
+    }
+    var component;
+    if (this.props.rotate) {
+      component = (
+        <div style = {Object.assign({}, transitionDivStyle, background)} onClick = {this.props.toggleRotate} className = "transitionBox">
+          <p id = "rotateDivId" className = "rotateTextBefore">This div rotates!</p>
+        </div>
+      );      
+    }
+    return (
+      <ReactCSSTransitionGroup
+        transitionName = 'rotateInDiv'
+        transitionEnterTimeout = {1000}
+        transitionLeaveTimeout = {1500}>
+        {component}
+      </ReactCSSTransitionGroup>
+    );
+  }
+};
+
+ReactDOM.render(<Root />, document.getElementById('main'));
