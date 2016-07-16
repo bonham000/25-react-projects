@@ -6,7 +6,7 @@ I built these 25 projects to improve my understanding of React.
 
 *You can see all of these projects live here.*
 
-**Here are some useful educational resources I found for learning React, roughly organized from beginner to advaced level:**
+**Here are some useful educational resources I found for learning React, roughly organized from beginner to advanced level:**
 
 * [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html) - The definitive starting place. All of the Facebook documentation is excellent and a great go-to resource moving forward.
 * [Thinking in React Screencast Tutorial](https://www.youtube.com/watch?v=mFEoarLnnqM) - A very nice and short Youtube tutorial by Hendrik Swanepoel of Tagtree demonstrating many of the 'Thinking in React' principles.
