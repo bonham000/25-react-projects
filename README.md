@@ -2,11 +2,12 @@
 
 **My path from novice to experienced React programmer.**
 
-When I began the Data Visualization Curriculum at Free Code Camp I quickly realized that React was way above my head. To improve my understanding of React, I began this project where I would create 25 simple applications using React, each ideally utilizing different features of the library. The code for each of these projects is provided here, and below I list several resources/tutorials that I found very helpful throughout the process of learning React. These resources are intended to provide a general path that can bring a beginner up to speed with the powerful React library.
+I built these 25 projects to improve my understanding of React.
 
 *You can see all of these projects live here.*
 
-**Useful Guides, Tutorials, and other Resources all available for free online. They are organized generally in order from beginner to advanced.**
+**Here are some useful educational resources I found for learning React, roughly organized from beginner to advaced level:**
+
 * [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html) - The definitive starting place. All of the Facebook documentation is excellent and a great go-to resource moving forward.
 * [Thinking in React Screencast Tutorial](https://www.youtube.com/watch?v=mFEoarLnnqM) - A very nice and short Youtube tutorial by Hendrik Swanepoel of Tagtree demonstrating many of the 'Thinking in React' principles.
 * [React for Everyone](https://www.youtube.com/playlist?list=PLLnpHn493BHFfs3Uj5tvx17mXk4B4ws4p) - LevelUpTuts Video Tutorial Series introducing you to React. This is a great place to start with the basics.
