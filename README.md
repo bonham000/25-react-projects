@@ -4,4 +4,4 @@
 
 I built these 25 projects to improve my understanding of React.
 
-*[See all the projects hosted live.](http://sean-smith.me/assets/portfolio/25-react-projects/index.html)*
+*[See all the projects hosted live here.](http://sean-smith.me/assets/portfolio/25-react-projects/index.html)*
