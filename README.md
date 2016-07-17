@@ -4,4 +4,4 @@
 
 I built these 25 projects to improve my understanding of React while working through the JavaScript curriculum at Free Code Camp.
 
-*[See all the projects hosted live here.](http://sean-smith.me/assets/portfolio/25-react-projects/index.html)*
+*[See all the projects live and a full summary of what I learned here.](http://sean-smith.me/assets/portfolio/25-react-projects/index.html)*
